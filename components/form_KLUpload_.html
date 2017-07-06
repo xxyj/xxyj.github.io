@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>快速上手 - regUI</title>
+        <title>上传组件 - regUI</title>
         <meta charset="utf-8">
         <meta name="description" content="regUI - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="快速上手 - regUI">
+        <meta property="og:title" content="上传组件 - regUI">
         <meta property="og:description" content="regUI - UI components based on RegularJS">
         <meta property="og:image" content="https://regUI.kaolafed.com/images/logo.png">
 
@@ -46,7 +46,7 @@
                 
                     
                                     <li>
-                                        <a href="/components/index.html" class="sidebar-link current">
+                                        <a href="/components/index.html" class="sidebar-link">
                                             快速上手
                                                 
                                         </a>
@@ -188,7 +188,7 @@
                         
                                 
                                     <li>
-                                        <a href="/components/form_KLUpload_.html" class="sidebar-link">
+                                        <a href="/components/form_KLUpload_.html" class="sidebar-link current">
                                             上传组件
                                                 KLUpload
                                         </a>
@@ -377,19 +377,247 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="regUI"><a href="#regUI" class="headerlink" title="regUI"></a>regUI</h2><p>regUI 是一个基于 Regularjs 的组件库，主要用于中后台系统</p>
-<h3 id="引入-regUI"><a href="#引入-regUI" class="headerlink" title="引入 regUI"></a>引入 regUI</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i regularjs@0.4.3 regUI -S</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> REGUI <span class="keyword">from</span> <span class="string">'regUI'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'node_modules/regUI/dist/css/regUI.default.min.css'</span></div></pre></td></tr></table></figure>
-<p>或者直接在需要引入的页面上</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//unpkg.com/regUI/dist/css/regUI.default.min.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/vendor/regular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/js/regUI.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>以这种内嵌 Script 方式引入的时候 REGUI 会自动挂在 Window 上</p>
-<h3 id="使用-regUI"><a href="#使用-regUI" class="headerlink" title="使用 regUI"></a>使用 regUI</h3><p>由于使用 NEIUI 的组件需要先注册，我们可以在工程里面的 BaseComponent 里面使用 REGUI 暴露出来的一个 install 方法来将组件注册到 BaseComponent 上，这样继承自 BaseComponent 的组件就可以直接在模板里面使用组件了</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; install &#125; <span class="keyword">from</span> <span class="string">'regUI'</span>;</div><div class="line"><span class="keyword">import</span> Regular <span class="keyword">from</span> <span class="string">'regularjs'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> BaseComponent = Regular.extend(&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div><div class="line">install(Regular);</div></pre></td></tr></table></figure>
-<p>如果不想将 REGUI 的组件全部注册到全局上，或者是自己已有的组件和 REGUI 里面的组件命名冲突，也可以手动的注册想要使用的组件到 Regular 实例上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var Component = BaseComponent.extend(&#123;&#125;).component(&apos;kl-tooltip&apos;, REGUI.KLTooltip)</div></pre></td></tr></table></figure>
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="注"><a href="#注" class="headerlink" title="注"></a>注</h3><p>目前该上传组件采用FormData向后台提交文件数据。</p>
+<h3 id="基本展示形式（列表形式）-用于表单上传"><a href="#基本展示形式（列表形式）-用于表单上传" class="headerlink" title="基本展示形式（列表形式）, 用于表单上传"></a>基本展示形式（列表形式）, 用于表单上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'your_upload_address'</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="卡片展示形式，用于表格上传"><a href="#卡片展示形式，用于表格上传" class="headerlink" title="卡片展示形式，用于表格上传"></a>卡片展示形式，用于表格上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'your_upload_address'</span> <span class="attr">list-type</span>=<span class="string">"card"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="基本展示形式，配置多选上传"><a href="#基本展示形式，配置多选上传" class="headerlink" title="基本展示形式，配置多选上传"></a>基本展示形式，配置多选上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'your_upload_address'</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="卡片展示形式，配置多选上传"><a href="#卡片展示形式，配置多选上传" class="headerlink" title="卡片展示形式，配置多选上传"></a>卡片展示形式，配置多选上传</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'your_upload_address'</span> <span class="attr">list-type</span>=<span class="string">"card"</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="文件类型限制"><a href="#文件类型限制" class="headerlink" title="文件类型限制"></a>文件类型限制</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'your_upload_address'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span> <span class="attr">accept</span>=<span class="string">".jpg,.zip,video/*,audio/*"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="文件大小限制"><a href="#文件大小限制" class="headerlink" title="文件大小限制"></a>文件大小限制</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'your_upload_address'</span> <span class="attr">max-size</span>=<span class="string">"830M"</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="每行展示文件个数和总文件个数限制"><a href="#每行展示文件个数和总文件个数限制" class="headerlink" title="每行展示文件个数和总文件个数限制"></a>每行展示文件个数和总文件个数限制</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'your_upload_address'</span> <span class="attr">multiple</span>=<span class="string">&#123;true&#125;</span> <span class="attr">num-limit</span>=<span class="string">&#123;15&#125;</span> <span class="attr">num-perline</span>=<span class="string">&#123;4&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="带有已上传文件的形式"><a href="#带有已上传文件的形式" class="headerlink" title="带有已上传文件的形式"></a>带有已上传文件的形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-upload</span> <span class="attr">action</span>=<span class="string">'http://localhost:3000/upload'</span> <span class="attr">file-list</span>=<span class="string">&#123;list&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">kl-upload</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">ref</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">required</span> <span class="attr">message</span>=<span class="string">"请选择用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span> <span class="attr">required</span> <span class="attr">message</span>=<span class="string">"请输入密码"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"password"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xx-button</span> <span class="attr">title</span>=<span class="string">"验证"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.validate()&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">validate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> $form = <span class="keyword">this</span>.$refs.form;</div><div class="line">        <span class="keyword">return</span> $form.validate().success;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">list</span>: [</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'kaola-logo.jpeg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://haitao.nos.netease.com/264271ddbec447288f17aef71119b1f4.png?imageView&amp;thumbnail=220x0&amp;quality=85&amp;v=1'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'权限申请交互.rar'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://jira.netease.com/secure/attachment/176692/%E6%9D%83%E9%99%90%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7%E4%BA%A4%E4%BA%92-%E7%94%B3%E8%AF%B7%E7%AF%AE.rar'</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                <span class="attr">name</span>: <span class="string">'app-2dcode.jpg'</span>,</div><div class="line">                <span class="attr">url</span>: <span class="string">'http://pic23.nipic.com/20120903/10422454_211025593122_2.jpg'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#KLUpload">KLUpload</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<h2 id="-kl-upload-"> kl-upload 上传</h2>
+</dd>
+</dl>
+
+<p><a name="KLUpload"></a></p>
+<h2 id="KLUpload"><a href="#KLUpload" class="headerlink" title="KLUpload"></a>KLUpload</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLUpload_new"></a></p>
+<h3 id="new-KLUpload"><a href="#new-KLUpload" class="headerlink" title="new KLUpload()"></a>new KLUpload()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.action]</td>
+<td><code>string</code></td>
+<td>=&gt; 必选，上传地址</td>
+</tr>
+<tr>
+<td>[options.data.file-list]</td>
+<td><code>array</code></td>
+<td>=&gt; 上传的文件列表, 可以指定初始值，代表已经上传的文件，见demo，每次操作文件后，                                                             都可以通过该参数绑定的变量，得到最新的文件列表，其中每个文件项包含下面的字段:                                                             name: 文件名称                                                             url: 文件的路径                                                             flag: 0, 新增的文件; 1, 已经上传未被删除的文件，2，已经上传被删除的文件</td>
+</tr>
+<tr>
+<td>[options.data.name]</td>
+<td><code>string</code></td>
+<td>=&gt; 可选，上传的文件字段名, 默认为’file’</td>
+</tr>
+<tr>
+<td>[options.data.multiple]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 可选，是否支持多选, 可选值true/false，默认false单选</td>
+</tr>
+<tr>
+<td>[options.data.drag]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 可选，是否支持拖拽上传，可选值true/false，默认false不支持拖拽</td>
+</tr>
+<tr>
+<td>[options.data.accept]</td>
+<td><code>string</code></td>
+<td>=&gt; 可选，接受上传的文件类型, 同input的accept属性</td>
+</tr>
+<tr>
+<td>[options.data.list-type]</td>
+<td><code>string</code></td>
+<td>=&gt; 可选，上传组件的展示形式, 可选值list/card，默认list</td>
+</tr>
+<tr>
+<td>[options.data.num-limit]</td>
+<td><code>number</code></td>
+<td>=&gt; 可选，最大允许上传文件的个数，默认10个</td>
+</tr>
+<tr>
+<td>[options.data.num-perline]</td>
+<td><code>number</code></td>
+<td>=&gt; 可选，每行展示的文件个数，默认每行展示5个</td>
+</tr>
+<tr>
+<td>[options.data.max-size]</td>
+<td><code>number</code></td>
+<td>=&gt; 可选，上传文件大小的最大允许值, 支持数值大小以及KB,MB,GB为单元的指定</td>
+</tr>
+<tr>
+<td>[options.data.deletable]</td>
+<td><code>boolean</code></td>
+<td>=&gt; 可选，上传文件是否允许删除, 可选值true/false，默认true，可删除</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<h2 id="kl-upload-上传"><a href="#kl-upload-上传" class="headerlink" title=" kl-upload 上传"></a> kl-upload 上传</h2><p><strong>Kind</strong>: global constant  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='your_upload_address'></kl-upload>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='your_upload_address' list-type="card"></kl-upload>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='your_upload_address' multiple={true}></kl-upload>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='your_upload_address' list-type="card" multiple={true}></kl-upload>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='your_upload_address' file-list={list} accept=".jpg,.zip,video/*,audio/*"></kl-upload>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='your_upload_address' max-size="830M"></kl-upload>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='your_upload_address' multiple={true} num-limit={15} num-perline={4}></kl-upload>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-upload action='http://localhost:3000/upload' file-list={list}></kl-upload>
+<kl-form ref="form">
+    <kl-form-item title="用户名" cols=6 row required>
+        <kl-select required message="请选择用户名" />
+    </kl-form-item>
+    <kl-form-item title="密码" cols=6 row required message="请输入密码">
+        <kl-input type="password" />
+    </kl-form-item>
+    <xx-button title="验证" on-click={this.validate()} />
+</kl-form>
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    validate: function() {
+        var $form = this.$refs.form;
+        return $form.validate().success;
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
                         <div class="guide-links">
                             
+                                <span>← <a href="/components/form_KLTextArea_.html">文本输入</a></span>
+                                
                                     
+                                        <span style="float:right"><a href="/components/form_xxButton_.html">按钮</a> →</span>
+                                        
                         </div>
                 </div>
             </div>

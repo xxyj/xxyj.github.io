@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>快速上手 - regUI</title>
+        <title>复选框 - regUI</title>
         <meta charset="utf-8">
         <meta name="description" content="regUI - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="快速上手 - regUI">
+        <meta property="og:title" content="复选框 - regUI">
         <meta property="og:description" content="regUI - UI components based on RegularJS">
         <meta property="og:image" content="https://regUI.kaolafed.com/images/logo.png">
 
@@ -46,7 +46,7 @@
                 
                     
                                     <li>
-                                        <a href="/components/index.html" class="sidebar-link current">
+                                        <a href="/components/index.html" class="sidebar-link">
                                             快速上手
                                                 
                                         </a>
@@ -88,7 +88,7 @@
                             
                                 
                                     <li>
-                                        <a href="/components/form_KLCheck_.html" class="sidebar-link">
+                                        <a href="/components/form_KLCheck_.html" class="sidebar-link current">
                                             复选框
                                                 KLCheck
                                         </a>
@@ -377,19 +377,248 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="regUI"><a href="#regUI" class="headerlink" title="regUI"></a>regUI</h2><p>regUI 是一个基于 Regularjs 的组件库，主要用于中后台系统</p>
-<h3 id="引入-regUI"><a href="#引入-regUI" class="headerlink" title="引入 regUI"></a>引入 regUI</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i regularjs@0.4.3 regUI -S</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> REGUI <span class="keyword">from</span> <span class="string">'regUI'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'node_modules/regUI/dist/css/regUI.default.min.css'</span></div></pre></td></tr></table></figure>
-<p>或者直接在需要引入的页面上</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//unpkg.com/regUI/dist/css/regUI.default.min.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/vendor/regular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/js/regUI.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>以这种内嵌 Script 方式引入的时候 REGUI 会自动挂在 Window 上</p>
-<h3 id="使用-regUI"><a href="#使用-regUI" class="headerlink" title="使用 regUI"></a>使用 regUI</h3><p>由于使用 NEIUI 的组件需要先注册，我们可以在工程里面的 BaseComponent 里面使用 REGUI 暴露出来的一个 install 方法来将组件注册到 BaseComponent 上，这样继承自 BaseComponent 的组件就可以直接在模板里面使用组件了</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; install &#125; <span class="keyword">from</span> <span class="string">'regUI'</span>;</div><div class="line"><span class="keyword">import</span> Regular <span class="keyword">from</span> <span class="string">'regularjs'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> BaseComponent = Regular.extend(&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div><div class="line">install(Regular);</div></pre></td></tr></table></figure>
-<p>如果不想将 REGUI 的组件全部注册到全局上，或者是自己已有的组件和 REGUI 里面的组件命名冲突，也可以手动的注册想要使用的组件到 Regular 实例上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var Component = BaseComponent.extend(&#123;&#125;).component(&apos;kl-tooltip&apos;, REGUI.KLTooltip)</div></pre></td></tr></table></figure>
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-check</span> <span class="attr">name</span>=<span class="string">"多选按钮"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">cols</span>=<span class="string">"12"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">hint</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-check</span> <span class="attr">name</span>=<span class="string">"多选按钮1"</span> /&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-check</span> <span class="attr">name</span>=<span class="string">"多选按钮2"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="半选状态"><a href="#半选状态" class="headerlink" title="半选状态"></a>半选状态</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-check</span> <span class="attr">name</span>=<span class="string">"半选状态"</span> <span class="attr">checked</span>=<span class="string">&#123;test&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">test</span>: <span class="literal">null</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-check</span> <span class="attr">name</span>=<span class="string">"多选按钮"</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#KLCheck">KLCheck</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<p>KLCheck   多选按钮</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#check(checked) 改变选中状态">check(checked) 改变选中状态(checked)</a> ⇒ <code>void</code></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_change 选中状态改变时触发">“change 选中状态改变时触发”</a></dt>
+<dd></dd>
+<dt><a href="#event_check 改变选中状态时触发">“check 改变选中状态时触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="KLCheck"></a></p>
+<h2 id="KLCheck"><a href="#KLCheck" class="headerlink" title="KLCheck"></a>KLCheck</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLCheck_new"></a></p>
+<h3 id="new-KLCheck"><a href="#new-KLCheck" class="headerlink" title="new KLCheck()"></a>new KLCheck()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options.data</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.name]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 多选按钮的文字</td>
+</tr>
+<tr>
+<td>[options.data.checked]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>&lt;=&gt; 多选按钮的选择状态。<code>false</code>表示未选，<code>true</code>表示已选，<code>null</code>表示半选。</td>
+</tr>
+<tr>
+<td>[options.data.block]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否以block方式显示</td>
+</tr>
+<tr>
+<td>[options.data.readonly]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否只读</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt; 是否禁用</td>
+</tr>
+<tr>
+<td>[options.data.visible]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 补充class</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<p>KLCheck   多选按钮</p>
+<p><strong>Kind</strong>: global constant  </p>
+<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="check(checked) 改变选中状态"></a></p>
+<h2 id="check-checked-改变选中状态-checked-⇒-void"><a href="#check-checked-改变选中状态-checked-⇒-void" class="headerlink" title="check(checked) 改变选中状态(checked) ⇒ void"></a>check(checked) 改变选中状态(checked) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checked</td>
+<td><code>boolean</code></td>
+<td>选中状态。则在true/false之间切换。</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_change 选中状态改变时触发"></a></p>
+<h2 id="“change-选中状态改变时触发”"><a href="#“change-选中状态改变时触发”" class="headerlink" title="“change 选中状态改变时触发”"></a>“change 选中状态改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>date</td>
+<td><code>object</code></td>
+<td>改变后的选中状态</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_check 改变选中状态时触发"></a></p>
+<h2 id="“check-改变选中状态时触发”"><a href="#“check-改变选中状态时触发”" class="headerlink" title="“check 改变选中状态时触发”"></a>“check 改变选中状态时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>checked</td>
+<td><code>boolean</code></td>
+<td>选中状态</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-check name="多选按钮" />
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-form>
+    <kl-form-item cols="12" title="用户名" hint="用户名的用途">
+        <kl-check name="多选按钮1" />
+        <kl-check name="多选按钮2" />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-check name="半选状态" checked={test} />
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    data: {
+        test: null
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-check name="多选按钮" disabled />
+
+      */});
+      var component = new REGUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
                         <div class="guide-links">
                             
                                     
+                                        <span style="float:right"><a href="/components/form_KLCheckGroup_.html">复选组</a> →</span>
+                                        
                         </div>
                 </div>
             </div>

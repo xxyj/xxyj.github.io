@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>快速上手 - regUI</title>
+        <title>表单 - regUI</title>
         <meta charset="utf-8">
         <meta name="description" content="regUI - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="快速上手 - regUI">
+        <meta property="og:title" content="表单 - regUI">
         <meta property="og:description" content="regUI - UI components based on RegularJS">
         <meta property="og:image" content="https://regUI.kaolafed.com/images/logo.png">
 
@@ -46,7 +46,7 @@
                 
                     
                                     <li>
-                                        <a href="/components/index.html" class="sidebar-link current">
+                                        <a href="/components/index.html" class="sidebar-link">
                                             快速上手
                                                 
                                         </a>
@@ -118,7 +118,7 @@
                         
                                 
                                     <li>
-                                        <a href="/components/form_KLForm_.html" class="sidebar-link">
+                                        <a href="/components/form_KLForm_.html" class="sidebar-link current">
                                             表单
                                                 KLForm
                                         </a>
@@ -377,19 +377,234 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="regUI"><a href="#regUI" class="headerlink" title="regUI"></a>regUI</h2><p>regUI 是一个基于 Regularjs 的组件库，主要用于中后台系统</p>
-<h3 id="引入-regUI"><a href="#引入-regUI" class="headerlink" title="引入 regUI"></a>引入 regUI</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i regularjs@0.4.3 regUI -S</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> REGUI <span class="keyword">from</span> <span class="string">'regUI'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'node_modules/regUI/dist/css/regUI.default.min.css'</span></div></pre></td></tr></table></figure>
-<p>或者直接在需要引入的页面上</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//unpkg.com/regUI/dist/css/regUI.default.min.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/vendor/regular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/js/regUI.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>以这种内嵌 Script 方式引入的时候 REGUI 会自动挂在 Window 上</p>
-<h3 id="使用-regUI"><a href="#使用-regUI" class="headerlink" title="使用 regUI"></a>使用 regUI</h3><p>由于使用 NEIUI 的组件需要先注册，我们可以在工程里面的 BaseComponent 里面使用 REGUI 暴露出来的一个 install 方法来将组件注册到 BaseComponent 上，这样继承自 BaseComponent 的组件就可以直接在模板里面使用组件了</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; install &#125; <span class="keyword">from</span> <span class="string">'regUI'</span>;</div><div class="line"><span class="keyword">import</span> Regular <span class="keyword">from</span> <span class="string">'regularjs'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> BaseComponent = Regular.extend(&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div><div class="line">install(Regular);</div></pre></td></tr></table></figure>
-<p>如果不想将 REGUI 的组件全部注册到全局上，或者是自己已有的组件和 REGUI 里面的组件命名冲突，也可以手动的注册想要使用的组件到 Regular 实例上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var Component = BaseComponent.extend(&#123;&#125;).component(&apos;kl-tooltip&apos;, REGUI.KLTooltip)</div></pre></td></tr></table></figure>
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><p>required写在kl-form-item上和写在表单元素上验证效果是一样的, 但是如果label要显示红色星号,kl-form-item上必须要有required属性</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">ref</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span> <span class="attr">required</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">required</span> <span class="attr">message</span>=<span class="string">"请选择用户名"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">cols</span>=<span class="string">6</span> <span class="attr">row</span> <span class="attr">required</span> <span class="attr">message</span>=<span class="string">"请输入密码"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">type</span>=<span class="string">"password"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">xx-button</span> <span class="attr">title</span>=<span class="string">"验证"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.validate()&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">validate</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> $form = <span class="keyword">this</span>.$refs.form;</div><div class="line">        <span class="keyword">return</span> $form.validate().success;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="代码演示-1"><a href="#代码演示-1" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="inline排列"><a href="#inline排列" class="headerlink" title="inline排列"></a>inline排列</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">inline</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-select</span> <span class="attr">size</span>=<span class="string">"mdw"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"密码"</span> <span class="attr">row</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> <span class="attr">size</span>=<span class="string">"mdw"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end --> 
+<h3 id="获取select数据接口"><a href="#获取select数据接口" class="headerlink" title="获取select数据接口"></a>获取select数据接口</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">service</span>=<span class="string">&#123;api.selector&#125;</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">sourceKey</span>=<span class="string">"importTypeList"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">api</span>: &#123;</div><div class="line">            <span class="attr">selector</span>: <span class="string">'../../data/selector.json'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="验证示例"><a href="#验证示例" class="headerlink" title="验证示例"></a>验证示例</h3><!-- demo_start -->
+<p>如果不想使用Form标签</p>
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-form</span> <span class="attr">service</span>=<span class="string">&#123;api.selector&#125;</span> <span class="attr">ref</span>=<span class="string">"formgroup"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"标题1"</span> <span class="attr">cols</span>=<span class="string">12</span> <span class="attr">sourceKey</span>=<span class="string">"importTypeList"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-select</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">kl-form-item</span> <span class="attr">title</span>=<span class="string">"标题2"</span> <span class="attr">cols</span>=<span class="string">12</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">kl-input</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">kl-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">kl-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">api</span>: &#123;</div><div class="line">            <span class="attr">selector</span>: <span class="string">'../../data/selector.json'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#UIForm">UIForm</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_sourceCompleted kl-form自动获取sourceKey异步数据后触发">“sourceCompleted kl-form自动获取sourceKey异步数据后触发”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="UIForm"></a></p>
+<h2 id="UIForm"><a href="#UIForm" class="headerlink" title="UIForm"></a>UIForm</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Validation<br><a name="new_UIForm_new"></a></p>
+<h3 id="new-UIForm"><a href="#new-UIForm" class="headerlink" title="new UIForm()"></a>new UIForm()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.service]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 全站异步获取source的接口地址</td>
+</tr>
+<tr>
+<td>[options.data.class]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 扩展样式</td>
+</tr>
+<tr>
+<td>[options.data.inline]</td>
+<td><code>boolean</code></td>
+<td><code>&#x27;&#x27;</code></td>
+<td>=&gt; 如果true,kl-form-item按照inline-block排列</td>
+</tr>
+<tr>
+<td>[options.data.sourcePath]</td>
+<td><code>string</code></td>
+<td><code>&quot;data&quot;</code></td>
+<td>=&gt; 获取到select数据后,读取json数据的路径</td>
+</tr>
+<tr>
+<td>[options.data.labelSize]</td>
+<td><code>string</code> &#124; <code>number</code></td>
+<td><code>&quot;&#x27;&#x27;&quot;</code></td>
+<td>=&gt; 批量设置kl-form-item的labelSize,取值与kl-form-item的labelSize相同</td>
+</tr>
+<tr>
+<td>[options.data.labelLineHeight]</td>
+<td><code>string</code> &#124; <code>number</code></td>
+<td><code>&quot;&#x27;&#x27;&quot;</code></td>
+<td>=&gt; 批量设置kl-form-item的labelLineHeight,取值与kl-form-item的labelLineHeight相同</td>
+</tr>
+</tbody>
+</table>
+<p><a name="event_sourceCompleted kl-form自动获取sourceKey异步数据后触发"></a></p>
+<h2 id="“sourceCompleted-kl-form自动获取sourceKey异步数据后触发”"><a href="#“sourceCompleted-kl-form自动获取sourceKey异步数据后触发”" class="headerlink" title="“sourceCompleted kl-form自动获取sourceKey异步数据后触发”"></a>“sourceCompleted kl-form自动获取sourceKey异步数据后触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>result</td>
+<td><code>object</code></td>
+<td>所有异步数据</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-form ref="form">
+    <kl-form-item title="用户名" cols=6 row required>
+        <kl-select required message="请选择用户名" />
+    </kl-form-item>
+    <kl-form-item title="密码" cols=6 row required message="请输入密码">
+        <kl-input type="password" />
+    </kl-form-item>
+    <xx-button title="验证" on-click={this.validate()} />
+</kl-form>
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    validate: function() {
+        var $form = this.$refs.form;
+        return $form.validate().success;
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-form inline>
+    <kl-form-item title="用户名" row>
+        <kl-select size="mdw" />
+    </kl-form-item>
+    <kl-form-item title="密码" row>
+        <kl-input size="mdw" />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    data: {}
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-form service={api.selector} ref="formgroup">
+    <kl-form-item title="标题1" cols=12 sourceKey="importTypeList">
+        <kl-select />
+    </kl-form-item>
+    <kl-form-item title="标题2" cols=12>
+        <kl-input />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    data: {
+        api: {
+            selector: '../../data/selector.json'
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-form service={api.selector} ref="formgroup">
+    <kl-form-item title="标题1" cols=12 sourceKey="importTypeList">
+        <kl-select />
+    </kl-form-item>
+    <kl-form-item title="标题2" cols=12>
+        <kl-input />
+    </kl-form-item>
+</kl-form>
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    data: {
+        api: {
+            selector: '../../data/selector.json'
+        }
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
                         <div class="guide-links">
                             
+                                <span>← <a href="/components/form_KLDatePicker_.html">日期选择</a></span>
+                                
                                     
+                                        <span style="float:right"><a href="/components/form_KLInput_.html">输入框</a> →</span>
+                                        
                         </div>
                 </div>
             </div>

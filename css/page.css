@@ -34,7 +34,7 @@ pre .symbol,
 pre .symbol .string,
 pre .value,
 pre .regexp {
-  color: #31995e;
+  color: #006cff;
 }
 pre .title {
   color: #a6e22e;
@@ -63,7 +63,7 @@ pre .apache .tag,
 pre .apache .cbracket,
 pre .tex .command,
 pre .prompt {
-  color: #31995e;
+  color: #006cff;
 }
 pre .comment,
 pre .java .annotation,
@@ -156,14 +156,14 @@ a.button {
   padding: 0.75em 2em;
   display: inline-block;
   color: #fff;
-  background-color: #31995e;
+  background-color: #006cff;
   transition: all 0.15s ease;
   box-sizing: border-box;
-  border: 1px solid #31995e;
+  border: 1px solid #006cff;
 }
 a.button.white {
   background-color: #fff;
-  color: #31995e;
+  color: #006cff;
 }
 .highlight {
   overflow-x: auto;
@@ -284,7 +284,7 @@ a.button.white {
   display: block;
 }
 #nav .nav-dropdown a:hover {
-  color: #31995e;
+  color: #006cff;
 }
 #nav .arrow {
   display: inline-block;
@@ -314,6 +314,11 @@ body.docs #header {
   position: fixed;
   width: 100%;
   top: 0;
+  height: 60px;
+  background: #006cff;
+  color: #fff;
+  font-size: 34px;
+  line-height: 60px;
 }
 body.docs #nav {
   position: fixed;
@@ -341,7 +346,7 @@ body.docs #nav {
 }
 .nav-link:hover,
 .nav-link.current {
-  border-bottom: 3px solid #31995e;
+  border-bottom: 3px solid #006cff;
 }
 .search-query {
   height: 30px;
@@ -358,7 +363,7 @@ body.docs #nav {
   vertical-align: middle !important;
 }
 .search-query:focus {
-  border-color: #31995e;
+  border-color: #006cff;
 }
 #logo {
   display: inline-block;
@@ -407,7 +412,7 @@ body.docs #nav {
 .sidebar {
   position: absolute;
   z-index: 10;
-  top: 61px;
+  top: 80px;
   left: 0;
   bottom: 0;
   padding: 40px 0 30px 60px;
@@ -442,7 +447,7 @@ body.docs #nav {
 }
 .sidebar .sidebar-link.current {
   font-weight: 600;
-  color: #31995e;
+  color: #006cff;
 }
 .sidebar .sidebar-link.new:after {
   content: "NEW";
@@ -475,11 +480,11 @@ body.docs #nav {
   top: -1px;
 }
 .sidebar .sidebar-link:hover {
-  border-bottom: 2px solid #31995e;
+  border-bottom: 2px solid #006cff;
 }
 .sidebar .section-link.active {
   font-weight: bold;
-  color: #31995e;
+  color: #006cff;
 }
 .sidebar .main-menu {
   margin-bottom: 20px;
@@ -499,10 +504,10 @@ body.docs #nav {
   display: inline-block;
 }
 .sidebar .become-backer {
-  border: 1px solid #31995e;
+  border: 1px solid #006cff;
   border-radius: 2em;
   display: inline-block;
-  color: #31995e;
+  color: #006cff;
   font-size: 0.8em;
   width: 125px;
   padding: 4px 0;
@@ -601,7 +606,7 @@ body.docs #nav {
 }
 .content h3:after {
   content: "#";
-  color: #31995e;
+  color: #006cff;
   position: absolute;
   left: -0.7em;
   bottom: -2px;
@@ -612,13 +617,13 @@ body.docs #nav {
   margin: 1.2em 0;
 }
 .content a {
-  color: #31995e;
+  color: #006cff;
   font-weight: 400;
 }
 .content blockquote {
   margin: 2em 0;
   padding-left: 20px;
-  border-left: 4px solid #31995e;
+  border-left: 4px solid #006cff;
 }
 .content blockquote p {
   font-weight: 600;
@@ -640,7 +645,7 @@ body.docs #nav {
   background-color: #fcfcfc;
 }
 .content > table th {
-  background-color: #31995e;
+  background-color: #006cff;
   color: #fff;
   text-align: left;
 }
@@ -727,7 +732,7 @@ body.docs #nav {
   }
   .nav-link:hover,
   .nav-link.current {
-    border-bottom: 2px solid #31995e;
+    border-bottom: 2px solid #006cff;
   }
   #mobile-bar {
     display: block;

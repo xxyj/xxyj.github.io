@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>快速上手 - regUI</title>
+        <title>步骤 - regUI</title>
         <meta charset="utf-8">
         <meta name="description" content="regUI - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="快速上手 - regUI">
+        <meta property="og:title" content="步骤 - regUI">
         <meta property="og:description" content="regUI - UI components based on RegularJS">
         <meta property="og:image" content="https://regUI.kaolafed.com/images/logo.png">
 
@@ -46,7 +46,7 @@
                 
                     
                                     <li>
-                                        <a href="/components/index.html" class="sidebar-link current">
+                                        <a href="/components/index.html" class="sidebar-link">
                                             快速上手
                                                 
                                         </a>
@@ -290,7 +290,7 @@
                         
                                 
                                     <li>
-                                        <a href="/components/navigation_KLSteps_.html" class="sidebar-link">
+                                        <a href="/components/navigation_KLSteps_.html" class="sidebar-link current">
                                             步骤
                                                 KLSteps
                                         </a>
@@ -377,19 +377,159 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="regUI"><a href="#regUI" class="headerlink" title="regUI"></a>regUI</h2><p>regUI 是一个基于 Regularjs 的组件库，主要用于中后台系统</p>
-<h3 id="引入-regUI"><a href="#引入-regUI" class="headerlink" title="引入 regUI"></a>引入 regUI</h3><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">npm i regularjs@0.4.3 regUI -S</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> REGUI <span class="keyword">from</span> <span class="string">'regUI'</span></div><div class="line"><span class="keyword">import</span> <span class="string">'node_modules/regUI/dist/css/regUI.default.min.css'</span></div></pre></td></tr></table></figure>
-<p>或者直接在需要引入的页面上</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//unpkg.com/regUI/dist/css/regUI.default.min.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/vendor/regular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/regUI/dist/js/regUI.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>以这种内嵌 Script 方式引入的时候 REGUI 会自动挂在 Window 上</p>
-<h3 id="使用-regUI"><a href="#使用-regUI" class="headerlink" title="使用 regUI"></a>使用 regUI</h3><p>由于使用 NEIUI 的组件需要先注册，我们可以在工程里面的 BaseComponent 里面使用 REGUI 暴露出来的一个 install 方法来将组件注册到 BaseComponent 上，这样继承自 BaseComponent 的组件就可以直接在模板里面使用组件了</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; install &#125; <span class="keyword">from</span> <span class="string">'regUI'</span>;</div><div class="line"><span class="keyword">import</span> Regular <span class="keyword">from</span> <span class="string">'regularjs'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> BaseComponent = Regular.extend(&#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;);</div><div class="line">install(Regular);</div></pre></td></tr></table></figure>
-<p>如果不想将 REGUI 的组件全部注册到全局上，或者是自己已有的组件和 REGUI 里面的组件命名冲突，也可以手动的注册想要使用的组件到 Regular 实例上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">var Component = BaseComponent.extend(&#123;&#125;).component(&apos;kl-tooltip&apos;, REGUI.KLTooltip)</div></pre></td></tr></table></figure>
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-steps</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="迷你版"><a href="#迷你版" class="headerlink" title="迷你版"></a>迷你版</h3><p>在表单中使用</p>
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">kl-steps</span> <span class="attr">size</span>=<span class="string">"sm"</span> <span class="attr">current</span>=<span class="string">2</span> <span class="attr">steps</span>=<span class="string">&#123;steps&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> REGUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">steps</span>: [&#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">0</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'编辑'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">1</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'保存'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">2</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'提交'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="attr">status</span>: <span class="number">3</span>,</div><div class="line">            <span class="attr">title</span>: <span class="string">'审核'</span>,</div><div class="line">            <span class="attr">description</span>: <span class="string">'这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶'</span>,</div><div class="line">        &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
+<dt><a href="#KLSteps">KLSteps</a></dt>
+<dd></dd>
+</dl>
+
+<h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
+<dt><a href="#Component">Component</a></dt>
+<dd><hr>
+<p>KLSteps     步骤条</p>
+</dd>
+</dl>
+
+<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
+<dt><a href="#config">config()</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="KLSteps"></a></p>
+<h2 id="KLSteps"><a href="#KLSteps" class="headerlink" title="KLSteps"></a>KLSteps</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_KLSteps_new"></a></p>
+<h3 id="new-KLSteps"><a href="#new-KLSteps" class="headerlink" title="new KLSteps()"></a>new KLSteps()</h3><table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[options.data]</td>
+<td><code>object</code></td>
+<td></td>
+<td>= 绑定属性</td>
+</tr>
+<tr>
+<td>[options.data.steps]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 类似于kl-select的source</td>
+</tr>
+<tr>
+<td>[options.data.current]</td>
+<td><code>string</code></td>
+<td><code>null</code></td>
+<td>&lt;=&gt; 当前状态</td>
+</tr>
+<tr>
+<td>[options.data.size]</td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>=&gt;  当前尺寸</td>
+</tr>
+</tbody>
+</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<p>KLSteps     步骤条</p>
+<p><strong>Kind</strong>: global constant  </p>
+<h2 id="Author-ziane-zianecui-gmail-com"><a href="#Author-ziane-zianecui-gmail-com" class="headerlink" title="Author: ziane(zianecui@gmail.com)"></a><strong>Author:</strong> ziane(zianecui@gmail.com)</h2><p><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-steps current=2 steps={steps} />
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    data: {
+        steps: [{
+            status: 0,
+            title: '编辑',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 1,
+            title: '保存',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 2,
+            title: '提交',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 3,
+            title: '审核',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = REGUI._.multiline(function(){/*
+      
+<kl-steps size="sm" current=2 steps={steps} />
+
+      */});
+      
+var component = new REGUI.Component({
+    template: template,
+    data: {
+        steps: [{
+            status: 0,
+            title: '编辑',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 1,
+            title: '保存',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 2,
+            title: '提交',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }, {
+            status: 3,
+            title: '审核',
+            description: '这里是多信息的描述啊描述啊描述啊描述啊哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶哦耶',
+        }]
+    }
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
+
                         <div class="guide-links">
                             
+                                <span>← <a href="/components/navigation_KLSidebar_.html">菜单栏</a></span>
+                                
                                     
+                                        <span style="float:right"><a href="/components/navigation_KLTabs_.html">选项卡</a> →</span>
+                                        
                         </div>
                 </div>
             </div>
