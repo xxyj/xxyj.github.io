@@ -599,6 +599,9 @@ body.docs #nav {
   border-bottom: 1px solid #ddd;
   z-index: -1;
 }
+.content h2 a {
+  display: block;
+}
 .content h3 {
   margin: 52px 0 1.2em;
   position: relative;

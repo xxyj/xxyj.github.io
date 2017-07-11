@@ -4,14 +4,14 @@
 
     <head>
         <title>
-            模态框 - 
+            展示文本 - 
                 JR
         </title>
         <meta charset="utf-8">
         <meta name="description" content="JR - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="模态框 - JR">
+        <meta property="og:title" content="展示文本 - JR">
         <meta property="og:description" content="JR - UI components based on RegularJS">
         <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
 
@@ -185,7 +185,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRSlider_.html" class="sidebar-link">
+                                        <a href="/JR/components/form_JRSlider_.html" class="sidebar-link current">
                                             展示文本
                                                 JRSlider
                                         </a>
@@ -195,7 +195,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRText_.html" class="sidebar-link">
+                                        <a href="/JR/components/form_JRText_.html" class="sidebar-link current">
                                             展示文本
                                                 JRText
                                         </a>
@@ -241,7 +241,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/notice_JRModal_.html" class="sidebar-link current">
+                                        <a href="/JR/components/notice_JRModal_.html" class="sidebar-link">
                                             模态框
                                                 JRModal
                                         </a>
@@ -394,85 +394,53 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <p>含有遮罩层的对话框，用于模拟浏览器的<code>alert</code>、<code>confirm</code>和<code>prompt</code>。</p>
-<p>模态对话框通过遮罩层来阻止用户的其他行为。</p>
-<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+                    <h3 id="大小扩展"><a href="#大小扩展" class="headerlink" title="大小扩展"></a>大小扩展</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> JRUI.JRModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">lang</span>: <span class="string">'en-US'</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-xs"</span>&gt;</span>超小号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-sm"</span>&gt;</span>小号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>正常文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-lg"</span>&gt;</span>大号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-xl"</span>&gt;</span>超大号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="Disable"><a href="#Disable" class="headerlink" title="Disable"></a>Disable</h3><!-- demo_start -->
+<h3 id="颜色扩展"><a href="#颜色扩展" class="headerlink" title="颜色扩展"></a>颜色扩展</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> JRUI.JRModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">lang</span>: <span class="string">'en-US'</span>,</div><div class="line">                <span class="attr">okDisabled</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">cancelDisabled</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">cancelButton</span>: <span class="literal">true</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Default<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-primary"</span>&gt;</span>Primary<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-success"</span>&gt;</span>Success<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-warning"</span>&gt;</span>Warning<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-error"</span>&gt;</span>Error<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-inverse"</span>&gt;</span>Inverse<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-muted"</span>&gt;</span>Muted<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="不显示-footer"><a href="#不显示-footer" class="headerlink" title="不显示 footer"></a>不显示 footer</h3><!-- demo_start -->
+<h3 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> JRUI.JRModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">lang</span>: <span class="string">'en-US'</span>,</div><div class="line">                <span class="attr">hasFooter</span>: <span class="literal">false</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="禁止关闭"><a href="#禁止关闭" class="headerlink" title="禁止关闭"></a>禁止关闭</h3><!-- demo_start -->
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-fwb"</span>&gt;</span>加粗文本<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_start -->
+<h3 id="文本对齐"><a href="#文本对齐" class="headerlink" title="文本对齐"></a>文本对齐</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-primary"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Modal<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> modal = <span class="keyword">new</span> JRUI.JRModal(&#123;</div><div class="line">            <span class="attr">data</span>: &#123;</div><div class="line">                <span class="attr">lang</span>: <span class="string">'en-US'</span>,</div><div class="line">                <span class="attr">isCanClose</span>: <span class="literal">false</span>,</div><div class="line">                <span class="attr">content</span>: <span class="string">'Modal内容'</span></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-tal"</span>&gt;</span>左对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-tac"</span>&gt;</span>居中对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-tar"</span>&gt;</span>右对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-taj"</span>&gt;</span>两端对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h3><!-- demo_start -->
+<h3 id="垂直对齐"><a href="#垂直对齐" class="headerlink" title="垂直对齐"></a>垂直对齐</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-error"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Alert<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        JRUI.JRModal.alert(<span class="string">'Alert内容'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-vat"</span>&gt;</span>顶部对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-vam"</span>&gt;</span>垂直居中<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-vab"</span>&gt;</span>底部对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="Confirm"><a href="#Confirm" class="headerlink" title="Confirm"></a>Confirm</h3><!-- demo_start -->
+<p><em>待完成……</em></p>
+<h3 id="文本省略和换行"><a href="#文本省略和换行" class="headerlink" title="文本省略和换行"></a>文本省略和换行</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"u-btn u-btn-success"</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span>&gt;</span>Confirm<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">show</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        JRUI.JRModal.confirm(<span class="string">'Confirm内容'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-toe"</span> <span class="attr">style</span>=<span class="string">"width:100px;"</span>&gt;</span>这是一段很长很长的文字<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
+<p><em>待完成……</em></p>
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRModal">JRModal</a></dt>
+<dt><a href="#JRText">JRText</a></dt>
 <dd></dd>
 </dl>
 
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
 <dt><a href="#Component">Component</a></dt>
 <dd><hr>
-<p>JRModal     模态对话框</p>
+<h2 id="jrslider-">JRSlider  滑块</h2>
 </dd>
 </dl>
 
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-<dt><a href="#init">init()</a></dt>
-<dd></dd>
-<dt><a href="#close(result) 关闭对话框">close(result) 关闭对话框(result)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#ok_new 确定对话框">ok() 确定对话框()</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#cancel_new 取消对话框">cancel() 取消对话框()</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#alert(content[,title]) 弹出一个alert对话框。关闭时始终触发确定事件。">title]) 弹出一个alert对话框。关闭时始终触发确定事件。([content], [title])</a> ⇒ <code>Modal</code></dt>
-<dd></dd>
-<dt><a href="#confirm(content[,title]) 弹出一个confirm对话框">title]) 弹出一个confirm对话框([content], [title])</a> ⇒ <code>Modal</code></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_close 关闭对话框时触发">“close 关闭对话框时触发”</a></dt>
-<dd></dd>
-<dt><a href="#event_ok 确定对话框时触发">“ok 确定对话框时触发”</a></dt>
-<dd></dd>
-<dt><a href="#event_cancel 取消对话框时触发">“cancel 取消对话框时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="JRModal"></a></p>
-<h2 id="JRModal"><a href="#JRModal" class="headerlink" title="JRModal"></a>JRModal</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRModal_new"></a></p>
-<h3 id="new-JRModal"><a href="#new-JRModal" class="headerlink" title="new JRModal()"></a>new JRModal()</h3><table>
+<p><a name="JRText"></a></p>
+<h2 id="JRText"><a href="#JRText" class="headerlink" title="JRText"></a>JRText</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRText_new"></a></p>
+<h3 id="new-JRText"><a href="#new-JRText" class="headerlink" title="new JRText()"></a>new JRText()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -487,142 +455,48 @@
 <td><code>object</code></td>
 <td></td>
 <td>= 绑定属性</td>
-<td>Binding Properties</td>
 </tr>
 <tr>
-<td>[options.data.title]</td>
+<td>[options.data.text]</td>
 <td><code>string</code></td>
-<td><code>&quot;提示&quot;</code></td>
-<td>=&gt; 对话框标题</td>
-<td>Title of Dialog</td>
+<td><code>&quot;文本&quot;</code></td>
+<td>&lt;=&gt; 内容</td>
 </tr>
 <tr>
-<td>[options.data.content]</td>
+<td>[options.data.size]</td>
 <td><code>string</code></td>
 <td></td>
-<td>=&gt; 对话框内容</td>
+<td>=&gt; 大小</td>
 </tr>
 <tr>
-<td>[options.data.contentTemplate]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 对话框内容模板，用于支持复杂内容的自定义。</td>
-</tr>
-<tr>
-<td>[options.data.footerTemplate]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 对话框底部模板</td>
-</tr>
-<tr>
-<td>[options.data.okDisabled]</td>
+<td>[options.data.isBold]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt; Disale 确认按钮</td>
+<td>=&gt; 是否加粗</td>
 </tr>
 <tr>
-<td>[options.data.cancelDisabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; Disale 取消按钮</td>
-</tr>
-<tr>
-<td>[options.data.hasFooter]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否显示 footer</td>
-</tr>
-<tr>
-<td>[options.data.isCanClose]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否允许取消关闭</td>
-</tr>
-<tr>
-<td>[options.data.okButton]</td>
-<td><code>string</code> &#124; <code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否显示确定按钮。值为<code>string</code>时显示该段文字。</td>
-</tr>
-<tr>
-<td>[options.data.cancelButton]</td>
-<td><code>string</code> &#124; <code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示取消按钮。值为<code>string</code>时显示该段文字。</td>
-</tr>
-<tr>
-<td>[options.data.class]</td>
+<td>[options.data.align]</td>
 <td><code>string</code></td>
 <td></td>
-<td>=&gt; 补充class</td>
+<td>=&gt; 左右对齐方式</td>
 </tr>
 <tr>
-<td>[options.data.noClose]</td>
-<td><code>boolean</code></td>
+<td>[options.data.vertical]</td>
+<td><code>string</code></td>
 <td></td>
-<td>=&gt; ok时是否关闭弹窗</td>
+<td>=&gt; 上下对齐方式</td>
 </tr>
 <tr>
-<td>[options.data.minHeight]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 内容区域最小高度</td>
-</tr>
-<tr>
-<td>[options.data.maxHeight]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 内容区域最大高度，超出则显示滚动条</td>
+<td>[options.data.type]</td>
+<td><code>string</code></td>
+<td><code>&quot;default&quot;</code></td>
+<td>=&gt; 文本样式</td>
 </tr>
 </tbody>
 </table>
 <p><a name="Component"></a></p>
 <h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>JRModal     模态对话框</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="init"></a></p>
-<h2 id="init"><a href="#init" class="headerlink" title="init()"></a>init()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="close(result) 关闭对话框"></a></p>
-<h2 id="close-result-关闭对话框-result-⇒-void"><a href="#close-result-关闭对话框-result-⇒-void" class="headerlink" title="close(result) 关闭对话框(result) ⇒ void"></a>close(result) 关闭对话框(result) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td><code>boolean</code></td>
-<td>点击确定还是取消</td>
-</tr>
-</tbody>
-</table>
-<p><a name="ok_new 确定对话框"></a></p>
-<h2 id="ok-确定对话框-⇒-void"><a href="#ok-确定对话框-⇒-void" class="headerlink" title="ok() 确定对话框() ⇒ void"></a>ok() 确定对话框() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="cancel_new 取消对话框"></a></p>
-<h2 id="cancel-取消对话框-⇒-void"><a href="#cancel-取消对话框-⇒-void" class="headerlink" title="cancel() 取消对话框() ⇒ void"></a>cancel() 取消对话框() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="event_close 关闭对话框时触发"></a></p>
-<h2 id="“close-关闭对话框时触发”"><a href="#“close-关闭对话框时触发”" class="headerlink" title="“close 关闭对话框时触发”"></a>“close 关闭对话框时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td><code>boolean</code></td>
-<td>点击了确定还是取消</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_ok 确定对话框时触发"></a></p>
-<h2 id="“ok-确定对话框时触发”"><a href="#“ok-确定对话框时触发”" class="headerlink" title="“ok 确定对话框时触发”"></a>“ok 确定对话框时触发”</h2><p><strong>Kind</strong>: event emitted<br><a name="event_cancel 取消对话框时触发"></a></p>
-<h2 id="“cancel-取消对话框时触发”"><a href="#“cancel-取消对话框时触发”" class="headerlink" title="“cancel 取消对话框时触发”"></a>“cancel 取消对话框时触发”</h2><p><strong>Kind</strong>: event emitted  </p>
+<h2 id="JRSlider-滑块"><a href="#JRSlider-滑块" class="headerlink" title="JRSlider  滑块"></a>JRSlider  滑块</h2><p><strong>Kind</strong>: global constant  </p>
 
 <script>
 var index = 0;
@@ -630,127 +504,62 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<button class="u-btn u-btn-primary" on-click={this.show()}>Modal</button>
+<span class="u-text u-text-xs">超小号文本</span>
+<span class="u-text u-text-sm">小号文本</span>
+<span>正常文本</span>
+<span class="u-text u-text-lg">大号文本</span>
+<span class="u-text u-text-xl">超大号文本</span>
 
       */});
-      
-var component = new JRUI.Component({
-    template: template,
-    show: function() {
-        var modal = new JRUI.JRModal({
-            data: {
-                lang: 'en-US',
-                content: 'Modal内容'
-            }
-        });
-    }
-});
-
+      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<button class="u-btn u-btn-primary" on-click={this.show()}>Modal</button>
+<span>Default</span>
+<span class="u-text u-text-primary">Primary</span>
+<span class="u-text u-text-success">Success</span>
+<span class="u-text u-text-warning">Warning</span>
+<span class="u-text u-text-error">Error</span>
+<span class="u-text u-text-inverse">Inverse</span>
+<span class="u-text u-text-muted">Muted</span>
 
       */});
-      
-var component = new JRUI.Component({
-    template: template,
-    show: function() {
-        var modal = new JRUI.JRModal({
-            data: {
-                lang: 'en-US',
-                okDisabled: true,
-                cancelDisabled: true,
-                cancelButton: true,
-                content: 'Modal内容'
-            }
-        });
-    }
-});
-
+      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<button class="u-btn u-btn-primary" on-click={this.show()}>Modal</button>
+<div class="f-fwb">加粗文本</div>
 
       */});
-      
-var component = new JRUI.Component({
-    template: template,
-    show: function() {
-        var modal = new JRUI.JRModal({
-            data: {
-                lang: 'en-US',
-                hasFooter: false,
-                content: 'Modal内容'
-            }
-        });
-    }
-});
-
+      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<button class="u-btn u-btn-primary" on-click={this.show()}>Modal</button>
+<div class="f-vat">顶部对齐</div>
+<div class="f-vam">垂直居中</div>
+<div class="f-vab">底部对齐</div>
 
       */});
-      
-var component = new JRUI.Component({
-    template: template,
-    show: function() {
-        var modal = new JRUI.JRModal({
-            data: {
-                lang: 'en-US',
-                isCanClose: false,
-                content: 'Modal内容'
-            }
-        });
-    }
-});
-
+      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<button class="u-btn u-btn-error" on-click={this.show()}>Alert</button>
+<div class="f-toe" style="width:100px;">这是一段很长很长的文字</div>
 
       */});
-      
-var component = new JRUI.Component({
-    template: template,
-    show: function() {
-        JRUI.JRModal.alert('Alert内容');
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<button class="u-btn u-btn-success" on-click={this.show()}>Confirm</button>
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    show: function() {
-        JRUI.JRModal.confirm('Confirm内容');
-    }
-});
-
+      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -758,9 +567,11 @@ var component = new JRUI.Component({
 
                         <div class="guide-links">
                             
-                                <span>← <a href="/JR/components/notice_JRMask_.html">遮罩</a></span>
+                                <span>← <a href="/JR/components/form_JRSelect_.html">下拉选择</a></span>
                                 
                                     
+                                        <span style="float:right"><a href="/JR/components/form_JRText_.html">展示文本</a> →</span>
+                                        
                         </div>
                 </div>
                 </div>
