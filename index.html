@@ -188,9 +188,8 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <p>[TOC]</p>
-<p>##基于canvas的碰撞检测</p>
-<h3 id="一、盒模型碰撞"><a href="#一、盒模型碰撞" class="headerlink" title="一、盒模型碰撞"></a>一、盒模型碰撞</h3><h4 id="1、矩形与矩形的碰撞"><a href="#1、矩形与矩形的碰撞" class="headerlink" title="1、矩形与矩形的碰撞"></a>1、矩形与矩形的碰撞</h4><blockquote>
+                                        <p><a href="#一、盒模型碰撞">一、盒模型碰撞</a><br><a href="#二、分离轴定理">二、分离轴定理</a><br><a href="#三、像素检测">三、像素检测 </a><br><a href="#四、其他方式">四、其他方式</a><br><a href="#五、总结">五、总结</a></p>
+<h2 id="基于canvas的碰撞检测"><a href="#基于canvas的碰撞检测" class="headerlink" title="基于canvas的碰撞检测"></a>基于canvas的碰撞检测</h2><h3 id="一、盒模型碰撞"><a href="#一、盒模型碰撞" class="headerlink" title="一、盒模型碰撞"></a>一、盒模型碰撞</h3><h4 id="1、矩形与矩形的碰撞"><a href="#1、矩形与矩形的碰撞" class="headerlink" title="1、矩形与矩形的碰撞"></a>1、矩形与矩形的碰撞</h4><blockquote>
 <p><strong>核心公式：</strong><code>:A.x + A.w &gt;= B.x &amp;&amp; B.x + B.w &gt;= A.x &amp;&amp; A.y + A.h &gt;= B.y &amp;&amp; B.y + B.h &gt;= A.y</code></p>
 <p><strong>说明：</strong>矩形的碰撞检测就是检测边与边是否有碰撞或则是否矩形内部<br>   <br><br><strong>图解(碰撞的情况)：</strong><br>   <br><br>   <img src="https://misc.aotu.io/JChehe/2017-02-13-2d-collision-detection/rectangle_collision.png" alt=""></p>
 </blockquote>
@@ -240,7 +239,7 @@
 <p>关键函数：<a href="http://www.w3school.com.cn/tags/canvas_ispointinpath.asp" target="_blank" rel="external">isPointInPath</a>(判断一个点是否在当前路径中),使用起来非常简单<br>具体的 还是看<a href="https://github.com/xxyj/wuec" target="_blank" rel="external">demo</a>吧</p>
 </blockquote>
 <p><br></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
+<h3 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h3><blockquote>
 <p>碰撞检测的方式非常的多，各有优劣，实际使用过程中还是需要混合使用，比如说：我们一般可以在面积比较大的时候使用盒模型碰撞（将一些不规则物体先假设成矩形或则圆），确定出可能碰撞的小区域之后再使用像素检测来进行精确判断!</p>
 </blockquote>
 
