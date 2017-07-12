@@ -215,53 +215,6 @@
 
             
   
-    <article id="post-基于canvas的碰撞检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/07/基于canvas的碰撞检测/">基于canvas的碰撞检测</a>
-    </h1>
-  
-
-                    
-                        <a href="/2017/07/07/基于canvas的碰撞检测/" class="archive-article-date">
-  	<time datetime="2017-07-07T09:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-07</time>
-</a>
-                            
-            </header>
-            
-                <div class="article-entry" itemprop="articleBody">
-                    
-                                        
-                                            
-
-                                                
-        </div>
-        <div class="article-info article-info-index">
-            
-                    
-                        
-
-                            
-                                <p class="article-more-link">
-                                    <a class="article-more-a" href="/2017/07/07/基于canvas的碰撞检测/">
-                                        展开全文 >></a>
-                                </p>
-                                
-
-                                    
-                                                <div class="clearfix"></div>
-        </div>
-        </div>
-</article>
-
-
-
-            
-  
     <article id="post-hello world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -295,6 +248,104 @@
                             
                                 <p class="article-more-link">
                                     <a class="article-more-a" href="/2017/07/04/hello world/">
+                                        展开全文 >></a>
+                                </p>
+                                
+
+                                    
+                                                <div class="clearfix"></div>
+        </div>
+        </div>
+</article>
+
+
+
+            
+  
+    <article id="post-基于canvas的碰撞检测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/07/基于canvas的碰撞检测/">基于canvas的碰撞检测</a>
+    </h1>
+  
+
+                    
+                        <a href="/2017/03/07/基于canvas的碰撞检测/" class="archive-article-date">
+  	<time datetime="2017-03-07T09:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
+</a>
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>[TOC]</p>
+<p>##基于canvas的碰撞检测</p>
+<p>###一、盒模型碰撞</p>
+<p>####1、矩形与矩形的碰撞</p>
+<blockquote>
+<p><strong>核心公式：</strong><code>:A.x + A.w &gt;= B.x &amp;&amp; B.x + B.w &gt;= A.x &amp;&amp; A.y + A.h &gt;= B.y &amp;&amp; B.y + B.h &gt;= A.y</code><br>   <strong>说明：</strong>矩形的碰撞检测就是检测边与边是否有碰撞或则是否矩形内部<br>   <strong>图解(碰撞的情况)：</strong><img src="https://misc.aotu.io/JChehe/2017-02-13-2d-collision-detection/rectangle_collision.png" alt=""></p>
+</blockquote>
+<p>####2、圆与圆的碰撞   </p>
+<blockquote>
+<p><strong>核心公式：</strong><code>Math.sqrt(Math.pow(A.x - B.x, 2) + Math.pow(A.y - B.y, 2)) &lt;= A.r + B.r</code><br>   <strong>说明：</strong>圆形之间判断，需要判断圆与圆之间的距离是否大于2个圆的半径之和。<br>   <strong>图解：</strong><br>   <img src="https://misc.aotu.io/JChehe/2017-02-13-2d-collision-detection/circle_collision.png" alt=""></p>
+</blockquote>
+<p>###3、圆与矩形的碰撞</p>
+<blockquote>
+<p><strong>核心思路:</strong>判断圆形是否与矩形四边碰撞并且矩形的四个角是否在园内即可<br>  <strong>图解:</strong><img src="http://images2015.cnblogs.com/blog/803394/201511/803394-20151118023529749-1646683181.jpg" alt="图形判断"></p>
+</blockquote>
+<p>  <strong>代码如下:</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 检测圆形A和矩形B是否碰撞</div><div class="line"> * @param A</div><div class="line"> * @param B</div><div class="line"> */</div><div class="line">raTore: <span class="function"><span class="keyword">function</span> (<span class="params">A, B</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> x = <span class="built_in">Math</span>.max(B.x - A.r, <span class="number">0</span>);</div><div class="line">  <span class="keyword">let</span> y = <span class="built_in">Math</span>.max(B.y - A.r, <span class="number">0</span>);</div><div class="line">  <span class="keyword">let</span> w = <span class="built_in">Math</span>.min(B.x + B.w + A.r, <span class="keyword">this</span>.canvas.width);</div><div class="line">  <span class="keyword">let</span> h = <span class="built_in">Math</span>.min(B.y + B.h + A.r, <span class="keyword">this</span>.canvas.height);</div><div class="line">  <span class="comment">//分别生成2个矩形,判断远圆心是否在2个矩形之内</span></div><div class="line">  <span class="keyword">let</span> isInrect1 = A.x &gt;= x &amp;&amp; A.x &lt;= w &amp;&amp; A.y &gt;= B.y &amp;&amp; A.y &lt;= B.y + B.h;</div><div class="line">  <span class="keyword">let</span> isInrect2 = A.x &gt;= B.x &amp;&amp; A.x &lt;= B.x + B.w &amp;&amp; A.y &gt;= y &amp;&amp; A.y &lt;= h;</div><div class="line">  <span class="comment">//计算4个点是否在园内</span></div><div class="line">  <span class="keyword">let</span> b1 = <span class="built_in">Math</span>.pow((B.x - A.x), <span class="number">2</span>) + <span class="built_in">Math</span>.pow((B.y - A.y), <span class="number">2</span>) &lt;= A.r * A.r;</div><div class="line">  <span class="keyword">let</span> b2 = <span class="built_in">Math</span>.pow((B.x + B.w - A.x), <span class="number">2</span>) + <span class="built_in">Math</span>.pow((B.y - A.y), <span class="number">2</span>) &lt;= A.r * A.r;</div><div class="line">  <span class="keyword">let</span> b3 = <span class="built_in">Math</span>.pow((B.x - A.x), <span class="number">2</span>) + <span class="built_in">Math</span>.pow((B.y + B.h - A.y), <span class="number">2</span>) &lt;= A.r * A.r;</div><div class="line">  <span class="keyword">let</span> b4 = <span class="built_in">Math</span>.pow((B.x + B.w - A.x), <span class="number">2</span>) + <span class="built_in">Math</span>.pow((B.y + B.h - A.y), <span class="number">2</span>) &lt;= A.r * A.r;</div><div class="line">  <span class="comment">// sx sy表示物体xy方向的速度，碰撞之后需要交换速度</span></div><div class="line">  <span class="keyword">if</span> (isInrect1 || isInrect2 || b1 || b2 || b3 || b4) &#123;</div><div class="line">    [A.sy, B.sy] = [B.sy, A.sy];</div><div class="line">    [A.sx, B.sx] = [B.sx, A.sx];</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>###二、分离轴定理</p>
+<blockquote>
+<p><strong>起因：</strong>由于盒模型物体的碰撞检测都是基于规则物体（圆形或则矩形），无法试用其他多边形物体，那么多边形的碰撞咋办呢~</p>
+<p><strong>说明：</strong>假设2个不规则物体有所接触（碰撞），那么必然存在一个方向 的投影（可以想想成太阳照射产生的影子）会重合,即 <strong>若在某一角度光源下，两物体的投影存在间隙，则为不碰撞，否则为发生碰撞</strong></p>
+</blockquote>
+<p><strong>图列：</strong><br><img src="https://misc.aotu.io/JChehe/2017-02-13-2d-collision-detection/sat_base.png" alt=""></p>
+<blockquote>
+<p>在程序中，遍历所有角度是不现实的。那如何确定 投影轴呢？其实投影轴的数量与多边形的边数相等即可。</p>
+</blockquote>
+<p><img src="https://misc.aotu.io/JChehe/2017-02-13-2d-collision-detection/sat_projection_two.png" alt=""></p>
+<p><strong>抽取整个过程:</strong></p>
+<blockquote>
+<p>1、获取多边形所有投影轴<br>2、遍历投影轴获取投影<br>3、判断投影是否存在间隙,如果是则不碰撞</p>
+</blockquote>
+<p><strong>涉及的向量知识</strong></p>
+<blockquote>
+<p>1、向量表示法:AB或则a或则{x,y}<br>2、向量的垂直向量的算法:假如原有向量为{x,y},垂直向量为{m,n},则xm+ny=0;也就是说{x,y}的垂直向量为{-y,x}k或则{x,-y}K<br>3、向量的点积运算:A*B = x1y1+x2y2 = |A||B|cos0</p>
+</blockquote>
+<p><strong>demo地址：</strong></p>
+<blockquote>
+<p><a href="https://github.com/xxyj/wuec" target="_blank" rel="external">https://github.com/xxyj/wuec</a></p>
+</blockquote>
+<p>###三、像素检测<br>疑问：分离轴定理只适用于凸多边形，那么凹多边形又该如何处理呢？？？</p>
+<blockquote>
+<p>像素检测原理：检测2个物体在同一像素是否有覆盖,有则碰撞,无则不碰撞<br>关键函数：<a href="http://www.w3school.com.cn/tags/canvas_getimagedata.asp" target="_blank" rel="external">getImageData</a>,<a href="http://www.w3school.com.cn/tags/canvas_globalcompositeoperation.asp" target="_blank" rel="external">globalCompositeOperation</a>(两者使用其一即可)，<br>使用原理：通过函数计算两个物体在同一个像素点的透明度，然后通过该像素点的实际透明情况来判断是否有碰撞。具体参考：<a href="https://github.com/xxyj/wuec" target="_blank" rel="external">demo</a></p>
+</blockquote>
+<p>核心代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//需要创建一个离线canvas</span></div><div class="line"><span class="keyword">let</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>);</div><div class="line"><span class="keyword">let</span> ctx = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">ctx.drawImage(<span class="keyword">this</span>.offImage, <span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>.canvas.width, <span class="keyword">this</span>.canvas.height);</div><div class="line"><span class="comment">//如果有交集，交集处的显示方式</span></div><div class="line">ctx.globalCompositeOperation = <span class="string">'destination-in'</span>;</div><div class="line"> ctx.drawImage(<span class="keyword">this</span>.imgObject[<span class="number">4</span>], <span class="keyword">this</span>.x, <span class="keyword">this</span>.y, <span class="number">27</span>, <span class="number">41</span>);</div><div class="line"><span class="keyword">let</span> data = ctx.getImageData(<span class="built_in">Math</span>.abs(<span class="keyword">this</span>.x) - <span class="number">28</span>, <span class="number">0</span>, <span class="number">56</span>, <span class="number">30</span>).data;</div><div class="line">canvas = <span class="literal">null</span>;</div><div class="line">ctx = <span class="literal">null</span>;</div><div class="line"><span class="comment">//判断每个像素点的透明度</span></div><div class="line"><span class="keyword">return</span> data.some(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (index + <span class="number">1</span>) % <span class="number">4</span> === <span class="number">0</span> &amp;&amp; item !== <span class="number">0</span>;</div><div class="line">&#125;)</div><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div></pre></td></tr></table></figure></p>
+<p>###四、其他方式<br>疑问：像素检测非常的消耗性能，如果需要计算的面积非常的大，该如何处理？</p>
+<blockquote>
+<p>关键函数：<a href="http://www.w3school.com.cn/tags/canvas_ispointinpath.asp" target="_blank" rel="external">isPointInPath</a>(判断一个点是否在当前路径中),使用起来非常简单<br>具体的 还是看<a href="https://github.com/xxyj/wuec" target="_blank" rel="external">demo</a>吧</p>
+</blockquote>
+<p>###总结</p>
+<blockquote>
+<p>碰撞检测的方式非常的多，各有优劣，实际使用过程中还是需要混合使用，比如说：我们一般可以在面积比较大的时候使用盒模型碰撞（将一些不规则物体先假设成矩形或则圆），确定出可能碰撞的小区域之后再使用像素检测来进行精确判断!</p>
+</blockquote>
+
+                                            
+
+                                                
+        </div>
+        <div class="article-info article-info-index">
+            
+                    
+                        
+
+                            
+                                <p class="article-more-link">
+                                    <a class="article-more-a" href="/2017/03/07/基于canvas的碰撞检测/">
                                         展开全文 >></a>
                                 </p>
                                 
