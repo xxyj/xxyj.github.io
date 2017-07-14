@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 熊旭的博客</title>
+  <title>es7和es8前瞻 | 熊旭的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="熊旭的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="es7 新增2个功能，es8新增7个功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es7和es8前瞻">
+<meta property="og:url" content="http://yoursite.com/2017/07/14/es7和es8前瞻/index.html">
 <meta property="og:site_name" content="熊旭的博客">
+<meta property="og:description" content="es7 新增2个功能，es8新增7个功能">
+<meta property="og:updated_time" content="2017-07-14T09:11:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="熊旭的博客">
+<meta name="twitter:title" content="es7和es8前瞻">
+<meta name="twitter:description" content="es7 新增2个功能，es8新增7个功能">
   
     <link rel="alternative" href="/atom.xml" title="熊旭的博客" type="application/atom+xml">
   
@@ -166,78 +170,229 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-es7和es8前瞻" class="article article-type-post " itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
   
+    <h1 class="article-title" itemprop="name">
+      es7和es8前瞻
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/14/es7和es8前瞻/" class="archive-article-date">
+
+                    
+                        <a href="/2017/07/14/es7和es8前瞻/" class="archive-article-date">
   	<time datetime="2017-07-14T03:46:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/es7和es8前瞻/">es7和es8前瞻</a>
-    </h1>
-  
+                            
+            </header>
+            
+                <div class="article-entry" itemprop="articleBody">
+                    
+                                        <p>es7 新增2个功能，es8新增7个功能<br><a id="more"></a></p>
+<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><blockquote>
+<p>es6从2009年到2015年整整用了6年时间，变化也是非常的大，非常值得去<a href="http://wiki.jikexueyuan.com/project/es6/set-map.html" target="_blank" rel="external">学习</a>。但是现在的前端发展可以说日新月异，所以我们赶紧来看下es7，es8给我们带来了什么吧！</p>
+</blockquote>
+<p><br></p>
+<h3 id="es7-es2016"><a href="#es7-es2016" class="headerlink" title="es7(es2016)"></a>es7(es2016)</h3><blockquote>
+<p>es7 只增加了2个新功能（除了错误修复和一些很小的改进）</p>
+</blockquote>
+<p><br></p>
+<h4 id="1、Array-prototype-includes"><a href="#1、Array-prototype-includes" class="headerlink" title="1、Array.prototype.includes"></a>1、Array.prototype.includes</h4><ul>
+<li>概念:判断数组是否包含某元素</li>
+<li><p>用法：</p>
+<blockquote>
+<p>[‘a’, ‘b’, ‘c’].includes(‘a’) // true<br>[‘a’, ‘b’, ‘c’].includes(‘d’) // false</p>
+</blockquote>
+<p>includes类似于indexOf- 以下两个表达式大部分是等价的：</p>
+<blockquote>
+<p>arr.includes(x)<br>arr.indexOf(x) &gt;= 0</p>
+</blockquote>
+<p>主要区别在于includes()发现NaN，而indexOf()不是：</p>
+<blockquote>
+<p>[NaN].includes(NaN) // true<br>[NaN].indexOf(NaN) // -1</p>
+</blockquote>
+<p>includes不加区分+0和-0</p>
+<blockquote>
+<p>[-0].includes(+0) //true</p>
+</blockquote>
+<p>类型数组也将有一个方法includes()：</p>
+<blockquote>
+<p>let tarr = Uint8Array.of(12, 5, 3);<br>console.log(tarr.includes(5)); // true</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2、求幂运算符（-）"><a href="#2、求幂运算符（-）" class="headerlink" title="2、求幂运算符（**）"></a>2、求幂运算符（**）</h4><ul>
+<li>概念:等同于Math.pow()</li>
+<li>用法<blockquote>
+<p>2 <strong> 3 === 8<br>let a = 2; a </strong>= 3 === 8</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="3、误区"><a href="#3、误区" class="headerlink" title="3、误区"></a>3、误区</h4><blockquote>
+<p>async 不在这个版本哦，在es8</p>
+</blockquote>
+<p>  <br></p>
+<h3 id="es8-es2017"><a href="#es8-es2017" class="headerlink" title="es8(es2017)"></a>es8(es2017)</h3><h4 id="1、padStart＆padEnd"><a href="#1、padStart＆padEnd" class="headerlink" title="1、padStart＆padEnd"></a>1、padStart＆padEnd</h4><ul>
+<li>概念:字符串填充，参数1表示长度，参数2表示填充字段，默认为空格</li>
+<li>用法<blockquote>
+<p>‘es8’.padStart(2);          // ‘es8’<br>‘es8’.padStart(5);          // ‘&nbsp;&nbsp;&nbsp;es8’<br>‘es8’.padStart(6, ‘woof’);  // ‘wooes8’<br>‘es8’.padStart(14, ‘wow’);  // ‘wowwowwowwoes8’<br>‘es8’.padStart(7, ‘0’);     // ‘0000es8’<br>‘es8’.padEnd(2);          // ‘es8’<br>‘es8’.padEnd(5);          // ‘es8&nbsp;&nbsp;&nbsp;’<br>‘es8’.padEnd(6, ‘woof’);  // ‘es8woo’<br>‘es8’.padEnd(14, ‘wow’);  // ‘es8wowwowwowwo’<br>‘es8’.padEnd(7, ‘6’);     // ‘es86666’</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="2、Object-values"><a href="#2、Object-values" class="headerlink" title="2、Object.values"></a>2、Object.values</h4><ul>
+<li>概念:获取对象的值，有别于Object.keys</li>
+<li>用法<blockquote>
+<p>const obj = { x: ‘xxx’, y: 1 };<br>Object.values(obj); // [‘xxx’, 1]<br><br><br>Object.values(‘es8’); // [‘e’, ‘s’, ‘8’]</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="3、Object-entries"><a href="#3、Object-entries" class="headerlink" title="3、Object.entries"></a>3、Object.entries</h4><ul>
+<li>概念:返回一个给定对象自己的枚举属性[key, value]对的数组</li>
+<li>用法<blockquote>
+<p> const obj = { x: ‘xxx’, y: 1 };<br>Object.entries(obj); // [[‘x’, ‘xxx’], [‘y’, 1]]<br><br><br>const obj = [‘e’, ‘s’, ‘8’];<br>Object.entries(obj); // [[‘0’, ‘e’], [‘1’, ‘s’], [‘2’, ‘8’]]<br><br><br>const obj = { 10: ‘xxx’, 1: ‘yyy’, 3: ‘zzz’ };<br>Object.entries(obj); // [[‘1’, ‘yyy’], [‘3’, ‘zzz’], [‘10’: ‘xxx’]]<br>Object.entries(‘es8’); // [[‘0’, ‘e’], [‘1’, ‘s’], [‘2’, ‘8’]]</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="4、Object-getOwnPropertyDescriptors"><a href="#4、Object-getOwnPropertyDescriptors" class="headerlink" title="4、Object.getOwnPropertyDescriptors"></a>4、Object.getOwnPropertyDescriptors</h4><ul>
+<li>概念:返回定对象的所有属性描述符</li>
+<li>用法<blockquote>
+<p>const obj = {<br>get es7() { return 777; },<br>get es8() { return 888; }<br>};<br>Object.getOwnPropertyDescriptor(obj);<br>以下为返回值：<br>// {<br>//   es7: {<br>//     configurable: true,<br>//     enumerable: true,<br>//     get: function es7(){}, //the getter function<br>//     set: undefined<br>//   },<br>//   es8: {<br>//     configurable: true,<br>//     enumerable: true,<br>//     get: function es8(){}, //the getter function<br>//     set: undefined<br>//   }<br>// }</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="5、允许函数参数最后是逗号（不理解这个有什么用）"><a href="#5、允许函数参数最后是逗号（不理解这个有什么用）" class="headerlink" title="5、允许函数参数最后是逗号（不理解这个有什么用）"></a>5、允许函数参数最后是逗号（不理解这个有什么用）</h4><blockquote>
+<p>申明： function es8（var1，var2，var3 ，）{<br>  // …<br>}<br>调用： es8（10，20，30 ，）;</p>
+</blockquote>
+<h4 id="6、期待已久的async-function"><a href="#6、期待已久的async-function" class="headerlink" title="6、期待已久的async function"></a>6、期待已久的async function</h4><ul>
+<li>概念:es6 generater函数的语法糖，同步写法实现异步代码</li>
+<li>用法<blockquote>
+<p>function fetchTextByPromise() {<br>return new Promise(resolve =&gt; {<br>  setTimeout(() =&gt; {<br>  &nbsp;resolve(“es8”);<br>  }, 2000);<br>});<br>}<br>async function sayHello() {<br>const externalFetchedText = await fetchTextByPromise();<br>console.log(<code>Hello, ${externalFetchedText}</code>); // Hello, es8<br>}<br>console.log(1);<br>sayHello();<br>console.log(2);<br><br><br>结果为：<br>1<br>2<br>Hello, es8</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="7、共享内存与原子操作"><a href="#7、共享内存与原子操作" class="headerlink" title="7、共享内存与原子操作"></a>7、共享内存与原子操作</h4><blockquote>
+<p>共享内存允许多个线程并发读写数据，而原子操作则能够进行并发控制，确保多个存在竞争关系的线程顺序执行。本部分则介绍了新的构造器 SharedArrayBuffer 与包含静态方法的命名空间对象 Atomics。Atomic 对象类似于 Math，我们无法直接创建其实例，而只能使用其提供的静态方法：<br>add /sub - 增加或者减去某个位置的某个值<br>and / or /xor - 进行位操作<br>load - 获取值</p>
+</blockquote>
+<p><br></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><blockquote>
+<p>自从es6出来之后，es将会进入常更新模块，一年一个版本，es要开启新纪元了</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://2ality.com/2016/01/ecmascript-2016.html" target="_blank" rel="external">http://2ality.com/2016/01/ecmascript-2016.html</a></li>
+<li><a href="https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66" target="_blank" rel="external">https://hackernoon.com/es8-was-released-and-here-are-its-main-new-features-ee9c394adf66</a></li>
+</ul>
+</blockquote>
 
-        <div class="article-info info-on-right">
-          
-          
+                                            
 
+                                                
+                                                    <div class="page-reward">
+                                                        <a href="javascript:;" class="page-reward-btn tooltip-top">
+                                                            <div class="tooltip tooltip-east">
+                                                                <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                                                                
+                                                    </div>
+                                                    </span>
+                                                    </span>
+                                                    </span>
+                </div>
+                </a>
+    </div>
+    
         </div>
-        <div class="clearfix"></div>
-    </header>
+        <div class="article-info article-info-index">
+            
+                    
+                        
+
+                            
+
+                                    
+                                        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/07/基于canvas的碰撞检测/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/14/es7和es8前瞻/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+                                            
+                                                <div class="clearfix"></div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/基于canvas的碰撞检测/">基于canvas的碰撞检测</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
 </article>
-  
-  
-    </div></section>
-  
 
     
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/07/基于canvas的碰撞检测/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">基于canvas的碰撞检测</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+        
 
 
+            
+                
+
+                            
+
+                                        
+
+                                                    
+                                                            
           </div>
         </div>
       </div>
@@ -259,8 +414,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
