@@ -45,7 +45,6 @@
         <li><a href="/">首页</a></li>
 <li><a href="/components/" class="nav-link current">组件</a></li>
 <li><a href="/tools/" class="nav-link">工具</a></li>
-
     </ul>
     <div class="list">
         <ul class="menu-root">
@@ -267,7 +266,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/navigation_JRMenu_.html" class="sidebar-link">
+                                        <a href="/JR/components/navigation_JRMenu_.html" class="sidebar-link beta">
                                             两级菜单
                                                 JRMenu
                                         </a>
@@ -287,7 +286,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/navigation_JRSidebar_.html" class="sidebar-link current">
+                                        <a href="/JR/components/navigation_JRSidebar_.html" class="sidebar-link current beta">
                                             菜单栏
                                                 JRSidebar
                                         </a>
@@ -407,15 +406,15 @@
     }
     .demo-body {
         position: absolute;
-        left: 180px;
+        left: 200px;
         top: 60px;
         bottom: 0;
         right: 0;
         padding: 10px 13px;
     }
 </style>
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-main"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-head"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg"</span> <span class="attr">width</span>=<span class="string">"34px"</span> <span class="attr">height</span>=<span class="string">"34px"</span> <span class="attr">style</span>=<span class="string">"margin-right:9px;"</span> /&gt;</span></div><div class="line">        JRUI系统</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-sidebar</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">bodyEl</span>=<span class="string">"j-body"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"j-body"</span> <span class="attr">class</span>=<span class="string">"demo-body"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ui.card</span> <span class="attr">title</span>=<span class="string">"标题"</span>&gt;</span></div><div class="line">            content</div><div class="line">        <span class="tag">&lt;/<span class="name">ui.card</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">menus</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单A'</span>,</div><div class="line">         <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;, &#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单B'</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'/'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-main"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"demo-head"</span>&gt;</span></div><div class="line">        JRUI系统</div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-sidebar</span> <span class="attr">uniqueOpened</span>=<span class="string">&#123;uniqueOpened&#125;</span> <span class="attr">menus</span>=<span class="string">&#123;menus&#125;</span> <span class="attr">bodyEl</span>=<span class="string">"j-body"</span> <span class="attr">ref</span>=<span class="string">'slider'</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"j-body"</span> <span class="attr">class</span>=<span class="string">"demo-body"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-card</span> <span class="attr">title</span>=<span class="string">"标题"</span>&gt;</span></div><div class="line">            content</div><div class="line">        <span class="tag">&lt;/<span class="name">jr-card</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">class</span>=<span class="string">'primary'</span> <span class="attr">on-click</span>=<span class="string">&#123;this.toggle()&#125;</span> <span class="attr">title</span>=<span class="string">'&#123;title&#125;'</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">class</span>=<span class="string">'primary'</span> <span class="attr">on-click</span>=<span class="string">&#123;this.selecteItem(</span>'#<span class="attr">A</span>')&#125; <span class="attr">title</span>=<span class="string">'菜单A'</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">class</span>=<span class="string">'primary'</span> <span class="attr">on-click</span>=<span class="string">&#123;this.selecteItem(</span>'#<span class="attr">B</span>')&#125; <span class="attr">title</span>=<span class="string">'菜单B'</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">class</span>=<span class="string">'primary'</span> <span class="attr">on-click</span>=<span class="string">&#123;this.selecteItem(</span>'#<span class="attr">C</span>')&#125; <span class="attr">title</span>=<span class="string">'菜单C'</span>/&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">jr-button</span> <span class="attr">class</span>=<span class="string">'primary'</span> <span class="attr">on-click</span>=<span class="string">&#123;this.selecteItem(</span>'#<span class="attr">D</span>')&#125; <span class="attr">title</span>=<span class="string">'菜单D'</span>/&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">uniqueOpened</span>:<span class="literal">true</span>,</div><div class="line">        <span class="attr">title</span>:<span class="string">'不收起其他菜单'</span>,</div><div class="line">        <span class="attr">menus</span>: [&#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单A'</span>,</div><div class="line">         <span class="attr">open</span>: <span class="literal">true</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单A'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'#A'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单B'</span>,</div><div class="line">           <span class="attr">open</span>:<span class="literal">true</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'#B'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;, &#123;</div><div class="line">         <span class="attr">title</span>: <span class="string">'一级菜单B'</span>,</div><div class="line">         <span class="attr">children</span>: [&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单C'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'#C'</span></div><div class="line">         &#125;,&#123;</div><div class="line">           <span class="attr">title</span>: <span class="string">'二级菜单D'</span>,</div><div class="line">           <span class="attr">url</span>: <span class="string">'#D'</span></div><div class="line">         &#125;]</div><div class="line">       &#125;]</div><div class="line">    &#125;,</div><div class="line">    selecteItem(item)&#123;</div><div class="line">       <span class="keyword">this</span>.$refs.slider.selecteItem(item)</div><div class="line">    &#125;,</div><div class="line">    toggle()&#123;</div><div class="line">        <span class="keyword">this</span>.data.uniqueOpened=!<span class="keyword">this</span>.data.uniqueOpened;</div><div class="line">        <span class="keyword">this</span>.data.title=<span class="keyword">this</span>.data.uniqueOpened ? <span class="string">'不收起其他菜单'</span>:<span class="string">'收起其他菜单'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#JRSidebar">JRSidebar</a></dt>
@@ -431,6 +430,8 @@
 
 <h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
 <dt><a href="#config">config()</a></dt>
+<dd></dd>
+<dt><a href="#select(item) 选择某一菜单">select(item) 选择某一菜单(item)</a> ⇒ <code>void</code></dt>
 <dd></dd>
 </dl>
 
@@ -471,6 +472,12 @@
 <td>=&gt; 菜单style top的值</td>
 </tr>
 <tr>
+<td>[options.data.showRetract]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示收起项</td>
+</tr>
+<tr>
 <td>[options.data.active]</td>
 <td><code>boolean</code></td>
 <td><code>true</code></td>
@@ -497,7 +504,7 @@
 <tr>
 <td>[options.data.urlKey]</td>
 <td><code>string</code></td>
-<td><code>&quot;\&quot;url\&quot;&quot;</code></td>
+<td><code>&quot;&#x27;url&#x27;&quot;</code></td>
 <td>=&gt; 菜单结构中的链接key名</td>
 </tr>
 <tr>
@@ -507,10 +514,28 @@
 <td>=&gt; 二级菜单的字段key名</td>
 </tr>
 <tr>
+<td>[options.data.moduleKey]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;module&#x27;&quot;</code></td>
+<td>=&gt; 菜单结构中的模块key名</td>
+</tr>
+<tr>
 <td>[options.data.childrenKey]</td>
 <td><code>string</code></td>
 <td><code>&quot;\&quot;children\&quot;&quot;</code></td>
 <td>=&gt; 一级菜单对象下二级菜单数组的key名</td>
+</tr>
+<tr>
+<td>[options.data.menus[index].icon]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 菜单是否有icon，不填写则不显示</td>
+</tr>
+<tr>
+<td>[options.data.menus[index].open]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 是否选择当前菜单</td>
 </tr>
 </tbody>
 </table>
@@ -519,7 +544,24 @@
 <p>JRSidebar</p>
 <p><strong>Kind</strong>: global constant  </p>
 <h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(item) 选择某一菜单"></a></p>
+<h2 id="select-item-选择某一菜单-item-⇒-void"><a href="#select-item-选择某一菜单-item-⇒-void" class="headerlink" title="select(item) 选择某一菜单(item) ⇒ void"></a>select(item) 选择某一菜单(item) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item</td>
+<td><code>object</code></td>
+<td>选择项</td>
+</tr>
+</tbody>
+</table>
 
 <script>
 var index = 0;
@@ -530,42 +572,58 @@ var index = 0;
 
 <div class="demo-main">
     <div class="demo-head">
-        <img src="//haitao.nos.netease.com/2fecfadc7d48464b90c2fe9b5d92412a.svg" width="34px" height="34px" style="margin-right:9px;" />
         JRUI系统
     </div>
-    <jr-sidebar menus={menus} bodyEl="j-body" />
+    <jr-sidebar uniqueOpened={uniqueOpened} menus={menus} bodyEl="j-body" ref='slider'/>
     <div id="j-body" class="demo-body">
-        <ui.card title="标题">
+        <jr-card title="标题">
             content
-        </ui.card>
+        </jr-card>
     </div>
 </div>
+ <div>
+     <jr-button class='primary' on-click={this.toggle()} title='{title}'/>
+     <jr-button class='primary' on-click={this.selecteItem('#A')} title='菜单A'/>
+     <jr-button class='primary' on-click={this.selecteItem('#B')} title='菜单B'/>
+     <jr-button class='primary' on-click={this.selecteItem('#C')} title='菜单C'/>
+     <jr-button class='primary' on-click={this.selecteItem('#D')} title='菜单D'/>
+ </div>
 
       */});
       
 var component = new JRUI.Component({
     template: template,
     data: {
+        uniqueOpened:true,
+        title:'不收起其他菜单',
         menus: [{
          title: '一级菜单A',
          open: true,
          children: [{
            title: '二级菜单A',
-           url: '/'
+           url: '#A'
          },{
            title: '二级菜单B',
-           url: '/'
+           open:true,
+           url: '#B'
          }]
        }, {
          title: '一级菜单B',
          children: [{
-           title: '二级菜单A',
-           url: '/'
+           title: '二级菜单C',
+           url: '#C'
          },{
-           title: '二级菜单B',
-           url: '/'
+           title: '二级菜单D',
+           url: '#D'
          }]
        }]
+    },
+    selecteItem(item){
+       this.$refs.slider.selecteItem(item)
+    },
+    toggle(){
+        this.data.uniqueOpened=!this.data.uniqueOpened;
+        this.data.title=this.data.uniqueOpened ? '不收起其他菜单':'收起其他菜单';
     }
 });
 
