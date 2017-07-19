@@ -362,7 +362,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/widget_JRProgress_.html" class="sidebar-link current">
+                                        <a href="/JR/components/widget_JRProgress_.html" class="sidebar-link current beta">
                                             进度条
                                                 JRProgress
                                         </a>
@@ -383,7 +383,36 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><p>书写中ing</p>
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+<div class="m-example"></div>
+<style>
+.u-progress {
+    margin-bottom: 10px;
+    width: 500px;
+}
+</style>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"10"</span> <span class="attr">width</span>=<span class="string">200</span> <span class="attr">height</span>=<span class="string">20</span> <span class="attr">state</span>=<span class="string">"info"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"30"</span> <span class="attr">width</span>=<span class="string">300</span> <span class="attr">height</span>=<span class="string">30</span> <span class="attr">state</span>=<span class="string">"success"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"75"</span> <span class="attr">width</span>=<span class="string">500</span> <span class="attr">height</span>=<span class="string">40</span> <span class="attr">state</span>=<span class="string">"warning"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"100"</span> <span class="attr">width</span>=<span class="string">400</span> <span class="attr">height</span>=<span class="string">20</span> <span class="attr">state</span>=<span class="string">"error"</span> /&gt;</span></div></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+<!-- demo_end -->
+
+
+### 带有条纹以及条纹动画
+<!-- demo_start -->
+<div class="m-example"></div>
+
+<style>
+.u-progress {
+    margin-bottom: 10px;
+    width: 500px;
+}
+</style>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"10"</span> <span class="attr">state</span>=<span class="string">"info"</span> <span class="attr">striped</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"30"</span> <span class="attr">state</span>=<span class="string">"success"</span> <span class="attr">striped</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"75"</span> <span class="attr">state</span>=<span class="string">"warning"</span> <span class="attr">striped</span> <span class="attr">active</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-progress</span>  <span class="attr">percent</span>=<span class="string">"100"</span> <span class="attr">state</span>=<span class="string">"error"</span> <span class="attr">striped</span> <span class="attr">active</span>/&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
 <dt><a href="#JRProgress">JRProgress</a></dt>
 <dd></dd>
@@ -450,6 +479,18 @@
 <td>=&gt; 是否显示条纹</td>
 </tr>
 <tr>
+<td>[options.data.width]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 组件宽度</td>
+</tr>
+<tr>
+<td>[options.data.height]</td>
+<td><code>number</code></td>
+<td></td>
+<td>=&gt; 组件高度</td>
+</tr>
+<tr>
 <td>[options.data.active]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
@@ -475,6 +516,45 @@
 <p><strong>Kind</strong>: global constant  </p>
 <h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
 <h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
+
+<script>
+var index = 0;
+
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-progress  percent="10" width=200 height=20 state="info" />
+<jr-progress  percent="30" width=300 height=30 state="success" />
+<jr-progress  percent="75" width=500 height=40 state="warning" />
+<jr-progress  percent="100" width=400 height=20 state="error" />
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-progress  percent="10" state="info" striped />
+<jr-progress  percent="30" state="success" striped/>
+<jr-progress  percent="75" state="warning" striped active/>
+<jr-progress  percent="100" state="error" striped active/>
+
+      */});
+      
+var component = new JRUI.Component({
+    template: template
+});
+
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+</script>
 
                         <div class="guide-links">
                             
