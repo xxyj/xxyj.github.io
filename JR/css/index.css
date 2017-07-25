@@ -455,11 +455,12 @@ body.docs #nav {
   font-size: 10px;
   font-weight: 600;
   color: #fff;
-  background-color: #2973b7;
-  line-height: 14px;
+  background-color: #f00;
+  line-height: 18px;
   padding: 0 4px;
   border-radius: 3px;
-  margin-left: 5px;
+  margin-left: 30px;
+  height: 18px;
   vertical-align: middle;
   position: relative;
   top: -1px;
@@ -470,17 +471,18 @@ body.docs #nav {
   font-size: 10px;
   font-weight: 600;
   color: #fff;
+  height: 18px;
   background-color: #f66;
-  line-height: 14px;
+  line-height: 18px;
   padding: 0 4px;
   border-radius: 3px;
-  margin-left: 5px;
+  margin-left: 30px;
   vertical-align: middle;
   position: relative;
   top: -1px;
 }
 .sidebar .sidebar-link:hover {
-  border-bottom: 2px solid #006cff;
+  color: #006cff;
 }
 .sidebar .section-link.active {
   font-weight: bold;

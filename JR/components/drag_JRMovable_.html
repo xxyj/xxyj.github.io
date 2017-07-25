@@ -4,14 +4,14 @@
 
     <head>
         <title>
-            日期选择 - 
+            拖拽 - 
                 JR
         </title>
         <meta charset="utf-8">
         <meta name="description" content="JR - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="日期选择 - JR">
+        <meta property="og:title" content="拖拽 - JR">
         <meta property="og:description" content="JR - UI components based on RegularJS">
         <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
 
@@ -124,7 +124,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRDatePicker_.html" class="sidebar-link current beta">
+                                        <a href="/JR/components/form_JRDatePicker_.html" class="sidebar-link beta">
                                             日期选择
                                                 JRDatePicker
                                         </a>
@@ -322,7 +322,7 @@
                             
                                 
                                     <li>
-                                        <a href="/JR/components/drag_JRDraggable_.html" class="sidebar-link new">
+                                        <a href="/JR/components/drag_JRDraggable_.html" class="sidebar-link current new">
                                             拖拽
                                                 JRDraggable
                                         </a>
@@ -342,7 +342,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/drag_JRMovable_.html" class="sidebar-link new">
+                                        <a href="/JR/components/drag_JRMovable_.html" class="sidebar-link current new">
                                             拖拽
                                                 JRMovable
                                         </a>
@@ -419,74 +419,123 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
+                    <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">lang</span>=<span class="string">"en-US"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">6</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">date</span>=<span class="string">"2008-08-08"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div></pre></td></tr></table></figure>
+<style>
+.u-color {
+    background: #fff;
+    color: #fff;
+    height: 128px;
+    width: 128px;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    line-height: 128px;
+}
+.u-color-primary {
+    background: #3c8dbc;
+}
+.u-color-warning{
+    background:yellow;
+}
+.u-color-success{
+    background:green;
+}
+.u-color-error{
+    background:#ff0000;
+}
+.m-well {display: inline-block; vertical-align: bottom; width: 300px; height: 300px; padding: 20px; background: #f4f4f4; border: 4px solid #ccc; position: relative;}
+.m-well .u-color {border: 2px solid black;}
+.u-slider {position: relative; height: 6px; line-height: 6px; background: #e6e6e6;}
+.u-slider .slider_bar {float: left; height: 6px; line-height: 6px; background: #67aaf5;}
+.u-slider .slider_btn {
+        box-sizing: border-box; position: absolute; left: 0;
+        margin-top: -9px; margin-left: -7px; width: 14px; height: 24px;
+        background: #fff; border: 1px solid #ccc; border-radius: 2px;
+    }
+    .m-pallette {}
+.m-pallette .pallette_SV {position: relative; overflow: hidden; background: #f09; width: 256px; height: 256px;}
+.m-pallette .pallette_SV:before, .m-pallette .pallette_SV:after {
+    content: ''; display: block;
+    position: absolute; left: 0; right: 0; top: 0; bottom: 0;
+}
+.m-pallette .pallette_SV:before {background: linear-gradient(to right, white, rgba(255, 255, 255, 0));}
+.m-pallette .pallette_SV:after {background: linear-gradient(to top, black, rgba(0, 0, 0, 0));}
+.m-pallette .pallette_SV_btn {box-sizing: border-box; position: absolute; z-index: 5; margin-left: -8px; margin-top: -8px; width: 16px; height: 16px; border: 1px solid white; border-radius: 100%; box-shadow: 0 0 1px rgba(0, 0, 0, .5), inset 0 0 1px rgba(0, 0, 0, .5);}
+.m-panel {width: 100%; height: 100%; box-sizing: border-box;}
+.m-resizable {position: relative;}
+.m-resizable .resizable_handle {
+    cursor: nwse-resize;
+    position: absolute; z-index: 20; left: 100%; top: 100%;
+    width: 10px; height: 10px;
+    margin-left: -5px; margin-top: -5px;
+}
+</style>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-movable</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-primary"</span>&gt;</span>拖我<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="日期时间选择"><a href="#日期时间选择" class="headerlink" title="日期时间选择"></a>日期时间选择</h3><!-- demo_start -->
+<h3 id="轴向约束"><a href="#轴向约束" class="headerlink" title="轴向约束"></a>轴向约束</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date1&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date2&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">date1</span>: <span class="number">1481287269287</span>,</div><div class="line">        <span class="attr">date2</span>: <span class="string">'2016-12-09 09:03'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">axis</span>=<span class="string">"x"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-info"</span>&gt;</span>水平<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">axis</span>=<span class="string">"y"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-warning"</span>&gt;</span>垂直<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
+<h3 id="网格约束"><a href="#网格约束" class="headerlink" title="网格约束"></a>网格约束</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">grid</span>=<span class="string">&#123;</span> &#123; <span class="attr">x:</span> <span class="attr">40</span>, <span class="attr">y:</span> <span class="attr">30</span> &#125; &#125;&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-success"</span>&gt;</span>网格<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="日期范围"><a href="#日期范围" class="headerlink" title="日期范围"></a>日期范围</h3><!-- demo_start -->
+<h3 id="范围约束"><a href="#范围约束" class="headerlink" title="范围约束"></a>范围约束</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">minDate</span>=<span class="string">&#123;minDate&#125;</span> <span class="attr">maxDate</span>=<span class="string">&#123;maxDate&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">minDate</span>=<span class="string">"2008-08-08"</span> <span class="attr">maxDate</span>=<span class="string">"2008-08-16"</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">minDate</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span> + <span class="number">2</span>*<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>),</div><div class="line">        <span class="attr">maxDate</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(+<span class="keyword">new</span> <span class="built_in">Date</span> + <span class="number">7</span>*<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>)</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-well"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">range</span>=<span class="string">&#123;</span> &#123; <span class="attr">left:</span> <span class="attr">0</span>, <span class="attr">top:</span> <span class="attr">0</span>, <span class="attr">right:</span> <span class="attr">200</span>, <span class="attr">bottom:</span> <span class="attr">200</span> &#125; &#125;&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-info"</span>&gt;</span>object<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-well"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">range</span>=<span class="string">"offsetParent"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-info"</span> <span class="attr">style</span>=<span class="string">"position: absolute;"</span>&gt;</span>offsetParent<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
+<h3 id="范围约束模式"><a href="#范围约束模式" class="headerlink" title="范围约束模式"></a>范围约束模式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">date</span>=<span class="string">&#123;date&#125;</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>当前选择的日期为：&#123;date | format: 'yyyy-MM-dd'&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-well"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">range</span>=<span class="string">"offsetParent"</span> <span class="attr">rangeMode</span>=<span class="string">"inside"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-info"</span> <span class="attr">style</span>=<span class="string">"position: absolute;"</span>&gt;</span>inside<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-well"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">range</span>=<span class="string">"offsetParent"</span> <span class="attr">rangeMode</span>=<span class="string">"center"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-color u-color-info"</span> <span class="attr">style</span>=<span class="string">"position: absolute; margin-left: -68px; margin-top: -68px;"</span>&gt;</span>center<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>请打开浏览器的控制台查看结果。</p>
-<!-- demo_start -->
+<h3 id="Slider"><a href="#Slider" class="headerlink" title="Slider"></a>Slider</h3><p>这是Slider的一个简单示例。
+<!-- demo_start --></p>
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-date-picker</span></span></div><div class="line">    <span class="attr">on-toggle</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-toggle:</span>', '$<span class="attr">event.open:</span>', $<span class="attr">event.open</span>)&#125;</div><div class="line">    <span class="attr">on-select</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-select:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125;</div><div class="line">    <span class="attr">on-change</span>=<span class="string">&#123;console.log(</span>'<span class="attr">on-change:</span>', '$<span class="attr">event.date:</span>', $<span class="attr">event.date</span>)&#125; /&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"g-col g-col-6"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"u-slider"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slider_bar"</span> <span class="attr">style</span>=<span class="string">"width: &#123;percent&#125;%"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">axis</span>=<span class="string">"y"</span> <span class="attr">range</span>=<span class="string">"offsetParent"</span> <span class="attr">rangeMode</span>=<span class="string">"center"</span></span></div><div class="line">                <span class="attr">on-drag</span>=<span class="string">&#123;this._onDrag($event)&#125;</span>&gt;</div><div class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"slider_btn"</span> <span class="attr">style</span>=<span class="string">"left: &#123;percent&#125;%"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;<span class="attr">percent</span>: <span class="number">20</span>&#125;,</div><div class="line">    _onDrag($event) &#123;</div><div class="line">        <span class="keyword">this</span>.data.percent = $event.left/$event.range.right*<span class="number">100</span>;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="Pallette"><a href="#Pallette" class="headerlink" title="Pallette"></a>Pallette</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-pallette"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pallette_SV"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">range</span>=<span class="string">"offsetParent"</span> <span class="attr">rangeMode</span>=<span class="string">"center"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pallette_SV_btn"</span> <span class="attr">style</span>=<span class="string">"left: 100px; top: 100px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<!-- demo_end -->
+<h3 id="Resizable"><a href="#Resizable" class="headerlink" title="Resizable"></a>Resizable</h3><!-- demo_start -->
+<div class="m-example"></div>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-resizable"</span> <span class="attr">style</span>=<span class="string">"width: &#123;width&#125;px; height: &#123;height&#125;px;"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"m-panel m-panel-info"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"panel_bd"</span>&gt;</span>Content<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-movable</span> <span class="attr">range</span>=<span class="string">&#123;</span> &#123; <span class="attr">left:</span> <span class="attr">100</span>, <span class="attr">top:</span> <span class="attr">100</span>, <span class="attr">right:</span> <span class="attr">300</span>, <span class="attr">bottom:</span> <span class="attr">200</span> &#125; &#125; <span class="attr">rangeMode</span>=<span class="string">"center"</span> <span class="attr">on-drag</span>=<span class="string">&#123;this._onDrag($event)&#125;</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"resizable_handle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-movable</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">let</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">width</span>: <span class="number">240</span>,</div><div class="line">        <span class="attr">height</span>: <span class="number">120</span></div><div class="line">    &#125;,</div><div class="line">    _onDrag($event) &#123;</div><div class="line">        <span class="keyword">this</span>.data.width = $event.left;</div><div class="line">        <span class="keyword">this</span>.data.height = $event.top;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRDatePicker">JRDatePicker</a></dt>
+<dt><a href="#JRMovable">JRMovable</a> ⇐ <code>JRDraggable</code></dt>
 <dd></dd>
 </dl>
 
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
-<dt><a href="#Dropdown">Dropdown</a></dt>
+<dt><a href="#dom">dom</a></dt>
 <dd><hr>
-<h2 id="jrdatepicker-">JRDatePicker 日期选择</h2>
+<h2 id="jrmovable-">JRMovable    移动</h2>
 </dd>
 </dl>
 
 <h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
 <dt><a href="#config">config()</a></dt>
 <dd></dd>
-<dt><a href="#toggle(open) 展开/收起">toggle(open) 展开/收起(open)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#select(date) 选择一个日期">select(date) 选择一个日期(date)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#isOutOfRange(date) 是否超出规定的日期时间范围">isOutOfRange(date) 是否超出规定的日期时间范围(date)</a> ⇒ <code>boolean</code> | <code>Date</code></dt>
+<dt><a href="#restrict">restrict()</a></dt>
 <dd></dd>
 </dl>
 
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_change 日期时间改变时触发">“change 日期时间改变时触发”</a></dt>
-<dd></dd>
-<dt><a href="#event_toggle  展开/收起时触发">“toggle  展开/收起时触发”</a></dt>
-<dd></dd>
-<dt><a href="#event_select 选择某一项时触发">“select 选择某一项时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="JRDatePicker"></a></p>
-<h2 id="JRDatePicker"><a href="#JRDatePicker" class="headerlink" title="JRDatePicker"></a>JRDatePicker</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Dropdown<br><a name="new_JRDatePicker_new"></a></p>
-<h3 id="new-JRDatePicker"><a href="#new-JRDatePicker" class="headerlink" title="new JRDatePicker()"></a>new JRDatePicker()</h3><table>
+<p><a name="JRMovable"></a></p>
+<h2 id="JRMovable-⇐-JRDraggable"><a href="#JRMovable-⇐-JRDraggable" class="headerlink" title="JRMovable ⇐ JRDraggable"></a>JRMovable ⇐ <code>JRDraggable</code></h2><p><strong>Kind</strong>: global class<br><strong>Extends:</strong> <code>JRDraggable</code><br><a name="new_JRMovable_new"></a></p>
+<h3 id="new-JRMovable"><a href="#new-JRMovable" class="headerlink" title="new JRMovable()"></a>new JRMovable()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -498,63 +547,39 @@
 <tbody>
 <tr>
 <td>[options.data]</td>
-<td><code>object</code></td>
+<td><code>Object</code></td>
 <td></td>
-<td>= 绑定属性</td>
+<td>=  绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.date]</td>
-<td><code>object</code></td>
-<td><code></code></td>
-<td>&lt;=&gt; 当前选择的日期时间</td>
+<td>[options.data.proxy]</td>
+<td></td>
+<td></td>
+<td>@=&gt; 拖拽代理，即拖拽时移动的元素。默认值为<code>clone</code>，表示拖拽时会拖起自身的一个拷贝；当值为<code>self</code>，拖拽时直接拖起自身。也可以用<code>&lt;jr-draggable-proxy&gt;</code>自定义代理，或直接传入一个元素或函数。<code>&#39;&#39;</code>表示不使用拖拽代理。</td>
 </tr>
 <tr>
-<td>[options.data.showTime]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示时间选择</td>
-</tr>
-<tr>
-<td>[options.data.placeholder]</td>
+<td>[options.data.axis]</td>
 <td><code>string</code></td>
-<td><code>&quot;&#x27;请输入&#x27;&quot;</code></td>
-<td>=&gt; 文本框的占位文字</td>
+<td><code>&quot;&#x27;both&#x27;&quot;</code></td>
+<td>=&gt; 拖拽代理移动时限制的轴向，<code>all</code>表示可以在任意方向上移动，<code>x</code>表示限制在水平方向上移动，<code>y</code>表示限制在垂直方向上移动。</td>
 </tr>
 <tr>
-<td>[options.data.minDate]</td>
-<td><code>Date</code> &#124; <code>string</code></td>
-<td><code></code></td>
-<td>=&gt; 最小日期时间，如果为空则不限制</td>
+<td>[options.data.grid]</td>
+<td><code>Object</code></td>
+<td><code>{x:0,y:0}</code></td>
+<td>=&gt; 拖拽代理移动时限制的网格。值为一个{x,y}格式的对象，表示水平方向和垂直方向网格的大小。</td>
 </tr>
 <tr>
-<td>[options.data.maxDate]</td>
-<td><code>Date</code> &#124; <code>string</code></td>
-<td><code></code></td>
-<td>=&gt; 最大日期时间，如果为空则不限制</td>
+<td>[options.data.range]</td>
+<td><code>string</code> &#124; <code>object</code> &#124; <code>function</code></td>
+<td></td>
+<td>@=&gt; 拖拽范围。值可以为一个{left,top,right,bottom}格式的对象，表示代理元素移动的上下左右边界，也可以传一个函数。当值为<code>offsetParent</code>，代理元素限制在offsetParent中移动，仅适用于<code>position</code>为<code>absolute</code>的情况；当值为<code>parent</code>；当值为<code>window</code>时，拖拽时代理元素限制在window中移动，仅适用于<code>position</code>为<code>fixed</code>的情况。</td>
 </tr>
 <tr>
-<td>[options.data.hideTip]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示校验错误信息</td>
-</tr>
-<tr>
-<td>[options.data.autofocus]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否自动获得焦点</td>
-</tr>
-<tr>
-<td>[options.data.required]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否必填</td>
-</tr>
-<tr>
-<td>[options.data.readonly]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否只读</td>
+<td>[options.data.rangeMode]</td>
+<td><code>string</code></td>
+<td><code>&quot;inside&quot;</code></td>
+<td>=&gt; 拖拽范围模式，默认为<code>inside</code>，表示在拖拽范围内侧移动，<code>center</code>表示在拖拽范围边缘及内侧移动。</td>
 </tr>
 <tr>
 <td>[options.data.disabled]</td>
@@ -563,157 +588,30 @@
 <td>=&gt; 是否禁用</td>
 </tr>
 <tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否显示</td>
-</tr>
-<tr>
-<td>[options.data.size]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 组件大小, sm/md/lg</td>
-</tr>
-<tr>
-<td>[options.data.width]</td>
-<td><code>number</code></td>
-<td></td>
-<td>=&gt; 组件宽度</td>
-</tr>
-<tr>
 <td>[options.data.class]</td>
 <td><code>string</code></td>
-<td></td>
-<td>=&gt; 补充class</td>
+<td><code>&quot;&#x27;z-draggable&#x27;&quot;</code></td>
+<td>=&gt; 可拖拽时（即disabled=false）给该元素附加此class</td>
+</tr>
+<tr>
+<td>[options.data.sourceClass]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;z-dragSource&#x27;&quot;</code></td>
+<td>=&gt; 拖拽时给起始元素附加此class</td>
+</tr>
+<tr>
+<td>[options.data.proxyClass]</td>
+<td><code>string</code></td>
+<td><code>&quot;&#x27;z-dragProxy&#x27;&quot;</code></td>
+<td>=&gt; 拖拽时给代理元素附加此class</td>
 </tr>
 </tbody>
 </table>
-<p><a name="Dropdown"></a></p>
-<h2 id="Dropdown"><a href="#Dropdown" class="headerlink" title="Dropdown"></a>Dropdown</h2><hr>
-<h2 id="JRDatePicker-日期选择"><a href="#JRDatePicker-日期选择" class="headerlink" title="JRDatePicker 日期选择"></a>JRDatePicker 日期选择</h2><p><strong>Kind</strong>: global constant<br><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="toggle(open) 展开/收起"></a></p>
-<h2 id="toggle-open-展开-收起-open-⇒-void"><a href="#toggle-open-展开-收起-open-⇒-void" class="headerlink" title="toggle(open) 展开/收起(open) ⇒ void"></a>toggle(open) 展开/收起(open) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>open</td>
-<td><code>boolean</code></td>
-<td>展开/收起状态。如果无此参数，则在两种状态之间切换。</td>
-</tr>
-</tbody>
-</table>
-<p><a name="select(date) 选择一个日期"></a></p>
-<h2 id="select-date-选择一个日期-date-⇒-void"><a href="#select-date-选择一个日期-date-⇒-void" class="headerlink" title="select(date) 选择一个日期(date) ⇒ void"></a>select(date) 选择一个日期(date) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>date</td>
-<td><code>Date</code></td>
-<td>选择的日期</td>
-</tr>
-</tbody>
-</table>
-<p><a name="isOutOfRange(date) 是否超出规定的日期时间范围"></a></p>
-<h2 id="isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date"><a href="#isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date" class="headerlink" title="isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ boolean &#124; Date"></a>isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ <code>boolean</code> &#124; <code>Date</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>boolean</code> &#124; <code>Date</code> - date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>date</td>
-<td><code>Date</code></td>
-<td>待测的日期时间</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_change 日期时间改变时触发"></a></p>
-<h2 id="“change-日期时间改变时触发”"><a href="#“change-日期时间改变时触发”" class="headerlink" title="“change 日期时间改变时触发”"></a>“change 日期时间改变时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sender</td>
-<td><code>object</code></td>
-<td>事件发送对象</td>
-</tr>
-<tr>
-<td>date</td>
-<td><code>object</code></td>
-<td>改变后的日期时间</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_toggle  展开/收起时触发"></a></p>
-<h2 id="“toggle-展开-收起时触发”"><a href="#“toggle-展开-收起时触发”" class="headerlink" title="“toggle  展开/收起时触发”"></a>“toggle  展开/收起时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sender</td>
-<td><code>object</code></td>
-<td>事件发送对象</td>
-</tr>
-<tr>
-<td>open</td>
-<td><code>object</code></td>
-<td>展开/收起状态</td>
-</tr>
-</tbody>
-</table>
-<p><a name="event_select 选择某一项时触发"></a></p>
-<h2 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sender</td>
-<td><code>object</code></td>
-<td>事件发送对象</td>
-</tr>
-<tr>
-<td>date</td>
-<td><code>object</code></td>
-<td>当前选择项</td>
-</tr>
-</tbody>
-</table>
+<p><a name="dom"></a></p>
+<h2 id="dom"><a href="#dom" class="headerlink" title="dom"></a>dom</h2><hr>
+<h2 id="JRMovable-移动"><a href="#JRMovable-移动" class="headerlink" title="JRMovable    移动"></a>JRMovable    移动</h2><p><strong>Kind</strong>: global constant<br><a name="config"></a></p>
+<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="restrict"></a></p>
+<h2 id="restrict"><a href="#restrict" class="headerlink" title="restrict()"></a>restrict()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected  </p>
 
 <script>
 var index = 0;
@@ -721,14 +619,7 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-form>
-    <jr-form-item cols=6>
-        <jr-date-picker lang="en-US" />
-    </jr-form-item>
-    <jr-form-item cols=6>
-        <jr-date-picker date="2008-08-08" />
-    </jr-form-item>
-</jr-form>
+<jr-movable><div class="u-color u-color-primary">拖我</div></jr-movable>
 
       */});
       var component = new JRUI.Component({template: template});
@@ -738,34 +629,93 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<div class="f-cb">
-<jr-form>
-    <jr-form-item cols=4>
-        <jr-date-picker showTime date={date1} />
-    </jr-form-item>
-    <jr-form-item cols=4>
-        <jr-date-picker showTime date={date2} />
-    </jr-form-item>
-</jr-form>
+<jr-movable axis="x"><div class="u-color u-color-info">水平</div></jr-movable>
+<jr-movable axis="y"><div class="u-color u-color-warning">垂直</div></jr-movable>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<jr-movable grid={ { x: 40, y: 30 } }><div class="u-color u-color-success">网格</div></jr-movable>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<div class="m-well">
+    <jr-movable range={ { left: 0, top: 0, right: 200, bottom: 200 } }><div class="u-color u-color-info">object</div></jr-movable>
+</div>
+<div class="m-well">
+    <jr-movable range="offsetParent"><div class="u-color u-color-info" style="position: absolute;">offsetParent</div></jr-movable>
+</div>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<div class="m-well">
+    <jr-movable range="offsetParent" rangeMode="inside"><div class="u-color u-color-info" style="position: absolute;">inside</div></jr-movable>
+</div>
+<div class="m-well">
+    <jr-movable range="offsetParent" rangeMode="center"><div class="u-color u-color-info" style="position: absolute; margin-left: -68px; margin-top: -68px;">center</div></jr-movable>
+</div>
+
+      */});
+      var component = new JRUI.Component({template: template});
+      component.$inject(document.querySelectorAll('.m-example')[index]);
+    })(index++);
+    
+    (function(index) {
+      var template = JRUI._.multiline(function(){/*
+      
+<div class="g-row">
+    <div class="g-col g-col-6">
+        <div class="u-slider">
+            <div class="slider_bar" style="width: {percent}%"></div>
+            <jr-movable axis="y" range="offsetParent" rangeMode="center"
+                on-drag={this._onDrag($event)}>
+                <div class="slider_btn" style="left: {percent}%"></div>
+            </jr-movable>
+        </div>
+    </div>
 </div>
 
       */});
       
-var component = new JRUI.Component({
+let component = new JRUI.Component({
     template: template,
-    data: {
-        date1: 1481287269287,
-        date2: '2016-12-09 09:03'
+    data: {percent: 20},
+    _onDrag($event) {
+        this.data.percent = $event.left/$event.range.right*100;
     }
 });
 
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-date-picker disabled />
+<div class="m-pallette">
+    <div class="pallette_SV">
+        <jr-movable range="offsetParent" rangeMode="center">
+            <div class="pallette_SV_btn" style="left: 100px; top: 100px;"></div>
+        </jr-movable>
+    </div>
+</div>
 
       */});
       var component = new JRUI.Component({template: template});
@@ -775,48 +725,29 @@ var component = new JRUI.Component({
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<div class="f-cb">
-    <jr-date-picker minDate={minDate} maxDate={maxDate} class="g-col g-col-6" />
-    <jr-date-picker minDate="2008-08-08" maxDate="2008-08-16" class="g-col g-col-6" />
+<div class="m-resizable" style="width: {width}px; height: {height}px;">
+    <div class="m-panel m-panel-info">
+        <div class="panel_bd">Content</div>
+    </div>
+    <jr-movable range={ { left: 100, top: 100, right: 300, bottom: 200 } } rangeMode="center" on-drag={this._onDrag($event)}>
+        <div class="resizable_handle"></div>
+    </jr-movable>
 </div>
 
       */});
       
-var component = new JRUI.Component({
+let component = new JRUI.Component({
     template: template,
     data: {
-        minDate: new Date(+new Date + 2*24*3600*1000),
-        maxDate: new Date(+new Date + 7*24*3600*1000)
+        width: 240,
+        height: 120
+    },
+    _onDrag($event) {
+        this.data.width = $event.left;
+        this.data.height = $event.top;
     }
 });
 
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<div class="f-cb">
-    <jr-date-picker date={date} class="g-col g-col-6" />
-    <jr-date-picker date={date} class="g-col g-col-6" />
-</div>
-<p>当前选择的日期为：{date | format: 'yyyy-MM-dd'}</p>
-
-      */});
-      var component = new JRUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-date-picker
-    on-toggle={console.log('on-toggle:', '$event.open:', $event.open)}
-    on-select={console.log('on-select:', '$event.date:', $event.date)}
-    on-change={console.log('on-change:', '$event.date:', $event.date)} />
-
-      */});
-      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -824,11 +755,9 @@ var component = new JRUI.Component({
 
                         <div class="guide-links">
                             
-                                <span>← <a href="/JR/components/form_JRCheckGroup_.html">复选组</a></span>
+                                <span>← <a href="/JR/components/drag_JRDroppable_.html">拖入</a></span>
                                 
                                     
-                                        <span style="float:right"><a href="/JR/components/form_JRForm_.html">表单</a> →</span>
-                                        
                         </div>
                 </div>
                 </div>
