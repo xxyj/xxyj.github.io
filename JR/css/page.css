@@ -737,7 +737,7 @@ body.docs #nav {
   }
   .nav-link:hover,
   .nav-link.current {
-    border-bottom: 2px solid #006cff;
+    color: #006cff;
   }
   #mobile-bar {
     display: block;
