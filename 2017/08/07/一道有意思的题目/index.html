@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>一道有意思的题目 | 熊旭的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m.n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理下，这个应该怎么写~">
+  <meta name="description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m,n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理收集下，这个应该怎么写~">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一道有意思的题目">
 <meta property="og:url" content="http://yoursite.com/2017/08/07/一道有意思的题目/index.html">
 <meta property="og:site_name" content="熊旭的博客">
-<meta property="og:description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m.n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理下，这个应该怎么写~">
-<meta property="og:updated_time" content="2017-08-07T12:47:33.000Z">
+<meta property="og:description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m,n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理收集下，这个应该怎么写~">
+<meta property="og:updated_time" content="2017-08-07T12:50:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一道有意思的题目">
-<meta name="twitter:description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m.n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理下，这个应该怎么写~">
+<meta name="twitter:description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m,n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理收集下，这个应该怎么写~">
   
     <link rel="alternative" href="/atom.xml" title="熊旭的博客" type="application/atom+xml">
   
@@ -190,7 +190,7 @@
             
                 <div class="article-entry" itemprop="articleBody">
                     
-                                        <h3 id="在知乎上看到这么一个问题：https-www-zhihu-com-question-60165921"><a href="#在知乎上看到这么一个问题：https-www-zhihu-com-question-60165921" class="headerlink" title="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921"></a>在知乎上看到这么一个问题：<a href="https://www.zhihu.com/question/60165921" target="_blank" rel="external">https://www.zhihu.com/question/60165921</a></h3><p>大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m.n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理下，这个应该怎么写~<br><a id="more"></a></p>
+                                        <h3 id="在知乎上看到这么一个问题：https-www-zhihu-com-question-60165921"><a href="#在知乎上看到这么一个问题：https-www-zhihu-com-question-60165921" class="headerlink" title="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921"></a>在知乎上看到这么一个问题：<a href="https://www.zhihu.com/question/60165921" target="_blank" rel="external">https://www.zhihu.com/question/60165921</a></h3><p>大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m,n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理收集下，这个应该怎么写~<br><a id="more"></a></p>
 <h2 id="题目：输入m-n参数，获取一个m长度的都是n的数组，不能用循环"><a href="#题目：输入m-n参数，获取一个m长度的都是n的数组，不能用循环" class="headerlink" title="题目：输入m.n参数，获取一个m长度的都是n的数组，不能用循环"></a>题目：输入m.n参数，获取一个m长度的都是n的数组，不能用循环</h2><h4 id="我们来做一个前提："><a href="#我们来做一个前提：" class="headerlink" title="我们来做一个前提："></a>我们来做一个前提：</h4><ul>
 <li>我们这里做一个假设，不能用循环是不能用循环语句，而不是底层不能做循环</li>
 <li>m,n的参数合法(为了精简代码，只写核心部分)</li>
@@ -200,7 +200,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arr= [];</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>)</span>&#123;</div><div class="line">    arr.push(n)</div><div class="line">    arr.length&lt;<span class="number">10</span>?<span class="built_in">arguments</span>.callee(m,n):<span class="string">''</span></div><div class="line">&#125;)(<span class="number">10</span>,<span class="number">3</span>)</div><div class="line"><span class="built_in">console</span>.info(arr);</div></pre></td></tr></table></figure>
 <blockquote>
-<p>注：不知道提问者想考些什么，这里用递归是在是大财小用了</p>
+<p>注：不知道提问者想考些什么，并不觉得这里用递归有什么好的</p>
 </blockquote>
 <h3 id="那么来看看还有哪些方法可以"><a href="#那么来看看还有哪些方法可以" class="headerlink" title="那么来看看还有哪些方法可以"></a>那么来看看还有哪些方法可以</h3><ul>
 <li>1、join+split <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line"><span class="keyword">return</span> (<span class="keyword">new</span> <span class="built_in">Array</span>(m+<span class="number">1</span>).join(<span class="string">','</span>+n).split(<span class="string">','</span>)).slice(<span class="number">1</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
