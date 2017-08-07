@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/07/一道有意思的题目/index.html">
 <meta property="og:site_name" content="熊旭的博客">
 <meta property="og:description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m,n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理收集下，这个应该怎么写~">
-<meta property="og:updated_time" content="2017-08-07T12:50:37.000Z">
+<meta property="og:updated_time" content="2017-08-07T12:57:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一道有意思的题目">
 <meta name="twitter:description" content="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m,n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理收集下，这个应该怎么写~">
@@ -203,7 +203,7 @@
 <p>注：不知道提问者想考些什么，并不觉得这里用递归有什么好的</p>
 </blockquote>
 <h3 id="那么来看看还有哪些方法可以"><a href="#那么来看看还有哪些方法可以" class="headerlink" title="那么来看看还有哪些方法可以"></a>那么来看看还有哪些方法可以</h3><ul>
-<li>1、join+split <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line"><span class="keyword">return</span> (<span class="keyword">new</span> <span class="built_in">Array</span>(m+<span class="number">1</span>).join(<span class="string">','</span>+n).split(<span class="string">','</span>)).slice(<span class="number">1</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<li>1、join+split <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">new</span> <span class="built_in">Array</span>(m+<span class="number">1</span>).join(<span class="string">','</span>+n).split(<span class="string">','</span>)).slice(<span class="number">1</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -213,7 +213,7 @@
 <ul>
 <li>2、concat</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">f =&gt; f(f</span>))(<span class="params">g =&gt; (m, n</span>) =&gt;</span> m === <span class="number">1</span> ? [n] : g(g)(m - <span class="number">1</span>, n).concat(n))(m, n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">f =&gt; f(f</span>))(<span class="params">g =&gt; (m, n</span>) =&gt;</span> m === <span class="number">1</span> ? [n] : g(g)(m - <span class="number">1</span>, n).concat(n))(m, n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>注：这种写法不太容易理解</p>
 </blockquote>
@@ -221,13 +221,13 @@
 <ul>
 <li>3、正则表达式,</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).toString().replace(<span class="regexp">/(?:)/g</span>,n).split(<span class="string">','</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).toString().replace(<span class="regexp">/(?:)/g</span>,n).split(<span class="string">','</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>注:正则中的?：表示对结果不进行存储，不写也不影响功能的正常使用</p>
 </blockquote>
 <p><br></p>
 <ul>
-<li>4、from(es5) <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>:m&#125;,()=&gt; n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<li>4、from(es5) <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>:m&#125;,()=&gt; n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
@@ -235,27 +235,27 @@
 </blockquote>
 <p><br></p>
 <ul>
-<li>5、map(es5)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="built_in">Array</span>.apply(<span class="literal">null</span>, <span class="built_in">Array</span>(m)).map(<span class="function"><span class="params">()</span> =&gt;</span> n);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<li>5、map(es5)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.apply(<span class="literal">null</span>, <span class="built_in">Array</span>(m)).map(<span class="function"><span class="params">()</span> =&gt;</span> n);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">   <span class="keyword">return</span> [...Array(m).keys()].map(<span class="function"><span class="params">e</span> =&gt;</span> n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure></p>
-<p><br><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).toString().split(<span class="string">","</span>).map(<span class="function"><span class="params">()</span>=&gt;</span>n);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> [...Array(m).keys()].map(<span class="function"><span class="params">e</span> =&gt;</span> n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).toString().split(<span class="string">","</span>).map(<span class="function"><span class="params">()</span>=&gt;</span>n);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>注：因为map会跳过没有赋值的键，所以map不能直接使用，上面几种也是比较理想的做法</p>
+<p>注：因为map会跳过没有赋值的键，所以不能直接在空数组上使用，上面几种也是比较理想的做法</p>
 </blockquote>
 <p><br></p>
 <ul>
-<li>6、fill(es6)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).fill(n) </div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<li>6、fill(es6)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).fill(n) </div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
-<p>注：es6 语法，有兼容性问题，如果不考虑兼容问题，应该是最合适的方法</p>
+<p>注：如果不考虑兼容，应该是最合适的方法</p>
 </blockquote>
 <p><br></p>
 <ul>
 <li>7、padStart padEnd(es8)</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line"> <span class="keyword">let</span> len =  +m * ((<span class="string">''</span>+n).length+<span class="number">1</span>);</div><div class="line"><span class="keyword">return</span> <span class="string">''</span>.padStart(len,<span class="string">','</span>+n).split(<span class="string">','</span>).slice(<span class="number">1</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">let</span> len =  +m * ((<span class="string">''</span> + n).length + <span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> <span class="string">''</span>.padStart(len,<span class="string">','</span> + n).split(<span class="string">','</span>).slice(<span class="number">1</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
 <blockquote>
 <p>注：es8 语法，有兼容性问题,并且方式也不是很好</p>
 </blockquote>
