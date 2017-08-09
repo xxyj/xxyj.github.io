@@ -4,14 +4,14 @@
 
     <head>
         <title>
-            展示文本 - 
+            开关 - 
                 JR
         </title>
         <meta charset="utf-8">
         <meta name="description" content="JR - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="展示文本 - JR">
+        <meta property="og:title" content="开关 - JR">
         <meta property="og:description" content="JR - UI components based on RegularJS">
         <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
 
@@ -184,7 +184,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRSwitch_.html" class="sidebar-link new">
+                                        <a href="/JR/components/form_JRSwitch_.html" class="sidebar-link current new">
                                             开关
                                                 JRSwitch
                                         </a>
@@ -194,7 +194,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRText_.html" class="sidebar-link current">
+                                        <a href="/JR/components/form_JRText_.html" class="sidebar-link">
                                             展示文本
                                                 JRText
                                         </a>
@@ -439,53 +439,50 @@
 </div>
         
                 <div class="content components with-sidebar">
-                    <h3 id="大小扩展"><a href="#大小扩展" class="headerlink" title="大小扩展"></a>大小扩展</h3><!-- demo_start -->
+                    <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-xs"</span>&gt;</span>超小号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-sm"</span>&gt;</span>小号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>正常文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-lg"</span>&gt;</span>大号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-xl"</span>&gt;</span>超大号文本<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-switch</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-switch</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-switch</span> <span class="attr">width</span>=<span class="string">60</span> <span class="attr">open</span>=<span class="string">&#123;false&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-switch</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-switch</span> <span class="attr">width</span>=<span class="string">70</span> <span class="attr">showText</span>=<span class="string">&#123;false&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-switch</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="颜色扩展"><a href="#颜色扩展" class="headerlink" title="颜色扩展"></a>颜色扩展</h3><!-- demo_start -->
+<h3 id="自定义背景色"><a href="#自定义背景色" class="headerlink" title="自定义背景色"></a>自定义背景色</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Default<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-primary"</span>&gt;</span>Primary<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-success"</span>&gt;</span>Success<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-warning"</span>&gt;</span>Warning<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-error"</span>&gt;</span>Error<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-inverse"</span>&gt;</span>Inverse<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"u-text u-text-muted"</span>&gt;</span>Muted<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-switch</span> <span class="attr">onColor</span>=<span class="string">'blue'</span> <span class="attr">offColor</span>=<span class="string">'#e96900'</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-switch</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h3><!-- demo_start -->
+<h3 id="自定义文字"><a href="#自定义文字" class="headerlink" title="自定义文字"></a>自定义文字</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-fwb"</span>&gt;</span>加粗文本<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_start -->
-<h3 id="文本对齐"><a href="#文本对齐" class="headerlink" title="文本对齐"></a>文本对齐</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-tal"</span>&gt;</span>左对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-tac"</span>&gt;</span>居中对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-tar"</span>&gt;</span>右对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-taj"</span>&gt;</span>两端对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-switch</span> <span class="attr">onText</span>=<span class="string">'开'</span> <span class="attr">offText</span>=<span class="string">'关'</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-switch</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<h3 id="垂直对齐"><a href="#垂直对齐" class="headerlink" title="垂直对齐"></a>垂直对齐</h3><!-- demo_start -->
+<h3 id="禁用"><a href="#禁用" class="headerlink" title="禁用"></a>禁用</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-vat"</span>&gt;</span>顶部对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-vam"</span>&gt;</span>垂直居中<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-vab"</span>&gt;</span>底部对齐<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-switch</span> <span class="attr">disabled</span>=<span class="string">&#123;true&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">jr-switch</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
-<p><em>待完成……</em></p>
-<h3 id="文本省略和换行"><a href="#文本省略和换行" class="headerlink" title="文本省略和换行"></a>文本省略和换行</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-toe"</span> <span class="attr">style</span>=<span class="string">"width:100px;"</span>&gt;</span>这是一段很长很长的文字<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<p><em>待完成……</em></p>
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRText">JRText</a></dt>
+<dt><a href="#JRSwitch">JRSwitch</a></dt>
 <dd></dd>
 </dl>
 
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
 <dt><a href="#Component">Component</a></dt>
 <dd><hr>
-<p>JRText  文本</p>
+<h2 id="jrswitch-">JRSwitch  开关</h2>
 </dd>
 </dl>
 
-<p><a name="JRText"></a></p>
-<h2 id="JRText"><a href="#JRText" class="headerlink" title="JRText"></a>JRText</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRText_new"></a></p>
-<h3 id="new-JRText"><a href="#new-JRText" class="headerlink" title="new JRText()"></a>new JRText()</h3><table>
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
+<dt><a href="#event_change 开关改变的时候">“change 开关改变的时候”</a></dt>
+<dd></dd>
+</dl>
+
+<p><a name="JRSwitch"></a></p>
+<h2 id="JRSwitch"><a href="#JRSwitch" class="headerlink" title="JRSwitch"></a>JRSwitch</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRSwitch_new"></a></p>
+<h3 id="new-JRSwitch"><a href="#new-JRSwitch" class="headerlink" title="new JRSwitch()"></a>new JRSwitch()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -499,113 +496,148 @@
 <td>[options.data]</td>
 <td><code>object</code></td>
 <td></td>
-<td>= 绑定属性</td>
+<td>=&gt; 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.text]</td>
+<td>[options.data.width]</td>
+<td><code>number</code></td>
+<td><code>46</code></td>
+<td>=&gt; 组件宽度</td>
+</tr>
+<tr>
+<td>[options.data.open]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 默认打开</td>
+</tr>
+<tr>
+<td>[options.data.showText]</td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>=&gt; 是否显示开关的文字</td>
+</tr>
+<tr>
+<td>[options.data.onText]</td>
 <td><code>string</code></td>
-<td><code>&quot;文本&quot;</code></td>
-<td>&lt;=&gt; 内容</td>
+<td><code>&quot;on&quot;</code></td>
+<td>=&gt; 打开的title</td>
 </tr>
 <tr>
-<td>[options.data.size]</td>
+<td>[options.data.offText]</td>
+<td><code>string</code></td>
+<td><code>&quot;off&quot;</code></td>
+<td>=&gt; 关闭的title</td>
+</tr>
+<tr>
+<td>[options.data.onColor]</td>
 <td><code>string</code></td>
 <td></td>
-<td>=&gt; 大小</td>
+<td>=&gt; 打开的背景色，不建议白色，因为文字为白色</td>
 </tr>
 <tr>
-<td>[options.data.isBold]</td>
+<td>[options.data.offColor]</td>
+<td><code>string</code></td>
+<td></td>
+<td>=&gt; 关闭的背景色，不建议白色，因为文字为白色</td>
+</tr>
+<tr>
+<td>[options.data.disabled]</td>
 <td><code>boolean</code></td>
 <td><code>false</code></td>
-<td>=&gt; 是否加粗</td>
+<td>=&gt; 禁止按钮</td>
 </tr>
 <tr>
-<td>[options.data.align]</td>
-<td><code>string</code></td>
+<td>[options.data.class]</td>
+<td><code>boolean</code></td>
 <td></td>
-<td>=&gt; 左右对齐方式</td>
-</tr>
-<tr>
-<td>[options.data.vertical]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 上下对齐方式</td>
-</tr>
-<tr>
-<td>[options.data.type]</td>
-<td><code>string</code></td>
-<td><code>&quot;default&quot;</code></td>
-<td>=&gt; 文本样式</td>
+<td>=&gt; 样式扩展</td>
 </tr>
 </tbody>
 </table>
 <p><a name="Component"></a></p>
 <h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
-<p>JRText  文本</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-Cody-Chan-x69-x6e-x74-54-x34-97-103-111-x40-x67-109-97-105-108-46-99-x6f-x6d"><a href="#Author-Cody-Chan-x69-x6e-x74-54-x34-97-103-111-x40-x67-109-97-105-108-46-99-x6f-x6d" class="headerlink" title="Author: Cody Chan&#x69;&#x6e;&#x74;&#54;&#x34;&#97;&#103;&#111;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;"></a><strong>Author:</strong> Cody Chan<a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#x69;&#x6e;&#x74;&#54;&#x34;&#97;&#103;&#111;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;">&#x69;&#x6e;&#x74;&#54;&#x34;&#97;&#103;&#111;&#x40;&#x67;&#109;&#97;&#105;&#108;&#46;&#99;&#x6f;&#x6d;</a></h2>
+<h2 id="JRSwitch-开关"><a href="#JRSwitch-开关" class="headerlink" title="JRSwitch  开关"></a>JRSwitch  开关</h2><p><strong>Kind</strong>: global constant<br><a name="event_change 开关改变的时候"></a></p>
+<h2 id="“change-开关改变的时候”"><a href="#“change-开关改变的时候”" class="headerlink" title="“change 开关改变的时候”"></a>“change 开关改变的时候”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sender</td>
+<td><code>object</code></td>
+<td>事件发送对象</td>
+</tr>
+<tr>
+<td>open</td>
+<td><code>boolean</code></td>
+<td>当前开关状态</td>
+</tr>
+</tbody>
+</table>
+
 <script>
 var index = 0;
 
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<span class="u-text u-text-xs">超小号文本</span>
-<span class="u-text u-text-sm">小号文本</span>
-<span>正常文本</span>
-<span class="u-text u-text-lg">大号文本</span>
-<span class="u-text u-text-xl">超大号文本</span>
+<jr-switch></jr-switch>
+<jr-switch width=60 open={false}></jr-switch>
+<jr-switch width=70 showText={false}></jr-switch>
 
       */});
-      var component = new JRUI.Component({template: template});
+      
+var component = new JRUI.Component({
+    template: template
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<span>Default</span>
-<span class="u-text u-text-primary">Primary</span>
-<span class="u-text u-text-success">Success</span>
-<span class="u-text u-text-warning">Warning</span>
-<span class="u-text u-text-error">Error</span>
-<span class="u-text u-text-inverse">Inverse</span>
-<span class="u-text u-text-muted">Muted</span>
+<jr-switch onColor='blue' offColor='#e96900'></jr-switch>
 
       */});
-      var component = new JRUI.Component({template: template});
+      
+var component = new JRUI.Component({
+    template: template
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<div class="f-fwb">加粗文本</div>
+<jr-switch onText='开' offText='关'></jr-switch>
 
       */});
-      var component = new JRUI.Component({template: template});
+      
+var component = new JRUI.Component({
+    template: template
+});
+
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<div class="f-vat">顶部对齐</div>
-<div class="f-vam">垂直居中</div>
-<div class="f-vab">底部对齐</div>
+<jr-switch disabled={true}></jr-switch>
 
       */});
-      var component = new JRUI.Component({template: template});
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
       
-<div class="f-toe" style="width:100px;">这是一段很长很长的文字</div>
+var component = new JRUI.Component({
+    template: template
+});
 
-      */});
-      var component = new JRUI.Component({template: template});
       component.$inject(document.querySelectorAll('.m-example')[index]);
     })(index++);
     
@@ -613,10 +645,10 @@ var index = 0;
 
                         <div class="guide-links">
                             
-                                <span>← <a href="/JR/components/form_JRSwitch_.html">开关</a></span>
+                                <span>← <a href="/JR/components/form_JRSelect_.html">下拉选择</a></span>
                                 
                                     
-                                        <span style="float:right"><a href="/JR/components/form_JRTextArea_.html">文本输入</a> →</span>
+                                        <span style="float:right"><a href="/JR/components/form_JRText_.html">展示文本</a> →</span>
                                         
                         </div>
                 </div>
