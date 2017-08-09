@@ -4,14 +4,14 @@
 
     <head>
         <title>
-            单选组 - 
+            图片预览 - 
                 JR
         </title>
         <meta charset="utf-8">
         <meta name="description" content="JR - UI components based on RegularJS">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta property="og:type" content="article">
-        <meta property="og:title" content="单选组 - JR">
+        <meta property="og:title" content="图片预览 - JR">
         <meta property="og:description" content="JR - UI components based on RegularJS">
         <meta property="og:image" content="https://JR.kaolafed.com/images/logo.png">
 
@@ -164,7 +164,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/form_JRRadioGroup_.html" class="sidebar-link current">
+                                        <a href="/JR/components/form_JRRadioGroup_.html" class="sidebar-link">
                                             单选组
                                                 JRRadioGroup
                                         </a>
@@ -398,7 +398,7 @@
                         
                                 
                                     <li>
-                                        <a href="/JR/components/widget_JRImagePreview_.html" class="sidebar-link beta">
+                                        <a href="/JR/components/widget_JRImagePreview_.html" class="sidebar-link current beta">
                                             图片预览
                                                 JRImagePreview
                                         </a>
@@ -452,69 +452,24 @@
                     <h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基本形式"><a href="#基本形式" class="headerlink" title="基本形式"></a>基本形式</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="数据绑定"><a href="#数据绑定" class="headerlink" title="数据绑定"></a>数据绑定</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">selected</span>=<span class="string">&#123;selected&#125;</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>value: &#123;value&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>selected: &#123;selected ? JSON.stringify(selected) : ''&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">11</span>, <span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">22</span>, <span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">id</span>: <span class="number">33</span>, <span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="表单项"><a href="#表单项" class="headerlink" title="表单项"></a>表单项</h3><p>在表单中使用</p>
-<!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">"12"</span> <span class="attr">title</span>=<span class="string">"用户名"</span> <span class="attr">hint</span>=<span class="string">"用户名的用途"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">disabled</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="远程数据"><a href="#远程数据" class="headerlink" title="远程数据"></a>远程数据</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-radio-group</span> <span class="attr">service</span>=<span class="string">&#123;@(this.service)&#125;</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">service</span>: &#123;</div><div class="line">        <span class="attr">getList</span>: <span class="function"><span class="keyword">function</span>(<span class="params">params, success</span>) </span>&#123;</div><div class="line">            JRUI.ajax.request(&#123;</div><div class="line">                <span class="attr">url</span>: <span class="string">'../data/list.json'</span>,</div><div class="line">                <span class="attr">method</span>: <span class="string">'get'</span>,</div><div class="line">                <span class="attr">type</span>: <span class="string">'json'</span>,</div><div class="line">                <span class="attr">data</span>: params,</div><div class="line">                <span class="attr">success</span>: success</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<!-- demo_end -->
-<h3 id="多行"><a href="#多行" class="headerlink" title="多行"></a>多行</h3><!-- demo_start -->
-<div class="m-example"></div>
-
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">jr-radio-group</span> <span class="attr">source</span>=<span class="string">&#123;source&#125;</span> <span class="attr">block</span> /&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">source</span>: [</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项1'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项2'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项3'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项4'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项5'</span>&#125;,</div><div class="line">            &#123;<span class="attr">name</span>: <span class="string">'选项6'</span>&#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">title</span>=<span class="string">'点击查看预览'</span> <span class="attr">on-click</span>=<span class="string">&#123;this.show()&#125;</span> <span class="attr">width</span>=<span class="string">100</span> <span class="attr">src</span> = <span class="string">'http://gacha.nosdn.127.net/639562a1f83047ffa4ae411c6aa49fa0.jpeg?imageView&amp;type=jpg&amp;enlarge=1&amp;quality=100&amp;axis=0'</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    show()&#123;</div><div class="line">     (<span class="keyword">new</span> JRUI.JRImagePreview(&#123;</div><div class="line">            <span class="attr">data</span>:&#123;</div><div class="line">                <span class="string">"imageList"</span>:[</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">'test.jpeg'</span>,</div><div class="line">                        <span class="attr">src</span>: <span class="string">'http://gacha.nosdn.127.net/639562a1f83047ffa4ae411c6aa49fa0.jpeg?imageView&amp;type=jpg&amp;enlarge=1&amp;quality=100&amp;axis=0'</span></div><div class="line">                    &#125;,</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">'test2.jpg'</span>,</div><div class="line">                        <span class="attr">src</span>: <span class="string">'http://gacha.nosdn.127.net/bd8705b5782841dc9e36b8af2cc77aba.jpeg?imageView&amp;type=jpg&amp;enlarge=1&amp;quality=100&amp;axis=0'</span></div><div class="line">                    &#125;, &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">'test3.jpeg'</span>,</div><div class="line">                        <span class="attr">src</span>: <span class="string">'http://gacha.nosdn.127.net/b288f65765cd4f0da3775c2228d1f182.jpg?imageView&amp;type=jpg&amp;enlarge=1&amp;quality=100&amp;axis=0'</span></div><div class="line">                    &#125;,</div><div class="line">                    &#123;</div><div class="line">                        <span class="attr">name</span>: <span class="string">'test4.jpg'</span>,</div><div class="line">                        <span class="attr">src</span>: <span class="string">'http://gacha.nosdn.127.net/ec3004a7ea034ffda67126f933edaed1.jpeg?imageView&amp;type=jpg&amp;enlarge=1&amp;quality=100&amp;axis=0'</span></div><div class="line">                    &#125;</div><div class="line">                ],</div><div class="line">                <span class="attr">curIndex</span>:<span class="number">1</span>,</div><div class="line">        &#125;</div><div class="line">    &#125;)).$inject(<span class="built_in">document</span>.body)</div><div class="line">    &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h2 id="Classes"><a href="#Classes" class="headerlink" title="Classes"></a>Classes</h2><dl>
-<dt><a href="#JRRadioGroup">JRRadioGroup</a></dt>
+<dt><a href="#JRImagePreview">JRImagePreview</a></dt>
 <dd></dd>
 </dl>
 
 <h2 id="Constants"><a href="#Constants" class="headerlink" title="Constants"></a>Constants</h2><dl>
-<dt><a href="#SourceComponent">SourceComponent</a></dt>
+<dt><a href="#Component">Component</a></dt>
 <dd><hr>
-<p>JRRadioGroup 输入扩展</p>
+<h2 id="-jrimagepreview-"> JRImagePreview 图片预览</h2>
 </dd>
 </dl>
 
-<h2 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h2><dl>
-<dt><a href="#config">config()</a></dt>
-<dd></dd>
-<dt><a href="#select(item) 选择某一">select(item) 选择某一(item)</a> ⇒ <code>void</code></dt>
-<dd></dd>
-<dt><a href="#validate_new 根据required验证组件的值是否正确">validate() 根据required验证组件的值是否正确()</a> ⇒ <code>object</code></dt>
-<dd></dd>
-</dl>
-
-<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><dl>
-<dt><a href="#event_select 选择某一项时触发">“select 选择某一项时触发”</a></dt>
-<dd></dd>
-</dl>
-
-<p><a name="JRRadioGroup"></a></p>
-<h2 id="JRRadioGroup"><a href="#JRRadioGroup" class="headerlink" title="JRRadioGroup"></a>JRRadioGroup</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: SourceComponent<br><a name="new_JRRadioGroup_new"></a></p>
-<h3 id="new-JRRadioGroup"><a href="#new-JRRadioGroup" class="headerlink" title="new JRRadioGroup()"></a>new JRRadioGroup()</h3><table>
+<p><a name="JRImagePreview"></a></p>
+<h2 id="JRImagePreview"><a href="#JRImagePreview" class="headerlink" title="JRImagePreview"></a>JRImagePreview</h2><p><strong>Kind</strong>: global class<br><strong>Extend</strong>: Component<br><a name="new_JRImagePreview_new"></a></p>
+<h3 id="new-JRImagePreview"><a href="#new-JRImagePreview" class="headerlink" title="new JRImagePreview()"></a>new JRImagePreview()</h3><table>
 <thead>
 <tr>
 <th>Param</th>
@@ -531,144 +486,22 @@
 <td>= 绑定属性</td>
 </tr>
 <tr>
-<td>[options.data.source]</td>
-<td><code>Array.&lt;object&gt;</code></td>
-<td><code>[]</code></td>
-<td>&lt;=&gt; 数据源</td>
-</tr>
-<tr>
-<td>[options.data.nameKey]</td>
-<td><code>string</code></td>
-<td><code>&quot;name&quot;</code></td>
-<td>=&gt; 数据项的name键</td>
-</tr>
-<tr>
-<td>[options.data.key]</td>
-<td><code>string</code></td>
-<td><code>&quot;id&quot;</code></td>
-<td>=&gt; 数据项的key键</td>
-</tr>
-<tr>
-<td>[options.data.source[].name]</td>
-<td><code>string</code></td>
+<td>[options.data.imageList]</td>
+<td><code>array</code></td>
 <td></td>
-<td>=&gt; 每项的内容</td>
+<td>=&gt; 必选，图片文件列表, 其中每个文件项包含下面的字段:                                                     name: 图片文件名称                                                     src: 图片文件的路径</td>
 </tr>
 <tr>
-<td>[options.data.selected]</td>
-<td><code>object</code></td>
-<td></td>
-<td>&lt;=&gt; 当前选择的对象</td>
-</tr>
-<tr>
-<td>[options.data.value]</td>
-<td><code>number</code> &#124; <code>string</code></td>
-<td></td>
-<td>&lt;=&gt; 当前选择的值</td>
-</tr>
-<tr>
-<td>[options.data.block]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 多行显</td>
-</tr>
-<tr>
-<td>[options.data.required]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否必选</td>
-</tr>
-<tr>
-<td>[options.data.message]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 验证错误提示</td>
-</tr>
-<tr>
-<td>[options.data.hideTip]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否显示校验错误信息</td>
-</tr>
-<tr>
-<td>[options.data.readonly]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否只读</td>
-</tr>
-<tr>
-<td>[options.data.disabled]</td>
-<td><code>boolean</code></td>
-<td><code>false</code></td>
-<td>=&gt; 是否禁用</td>
-</tr>
-<tr>
-<td>[options.data.visible]</td>
-<td><code>boolean</code></td>
-<td><code>true</code></td>
-<td>=&gt; 是否显</td>
-</tr>
-<tr>
-<td>[options.data.class]</td>
-<td><code>string</code></td>
-<td></td>
-<td>=&gt; 补充class</td>
-</tr>
-<tr>
-<td>[options.service]</td>
-<td><code>object</code></td>
-<td></td>
-<td>@=&gt; 数据服务</td>
+<td>[options.data.curIndex]</td>
+<td><code>number</code></td>
+<td><code>0</code></td>
+<td>=&gt; 必选，当前图片文件的索引, 默认第一项为当前项</td>
 </tr>
 </tbody>
 </table>
-<p><a name="SourceComponent"></a></p>
-<h2 id="SourceComponent"><a href="#SourceComponent" class="headerlink" title="SourceComponent"></a>SourceComponent</h2><hr>
-<p>JRRadioGroup 输入扩展</p>
-<p><strong>Kind</strong>: global constant  </p>
-<h2 id="Author-sensen-rainforest92-126-com"><a href="#Author-sensen-rainforest92-126-com" class="headerlink" title="Author: sensen(rainforest92@126.com)"></a><strong>Author:</strong> sensen(rainforest92@126.com)</h2><p><a name="config"></a></p>
-<h2 id="config"><a href="#config" class="headerlink" title="config()"></a>config()</h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> protected<br><a name="select(item) 选择某一"></a></p>
-<h2 id="select-item-选择某一-item-⇒-void"><a href="#select-item-选择某一-item-⇒-void" class="headerlink" title="select(item) 选择某一(item) ⇒ void"></a>select(item) 选择某一(item) ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public  </p>
-<table>
-<thead>
-<tr>
-<th>Param</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>item</td>
-<td><code>object</code></td>
-<td>选择</td>
-</tr>
-</tbody>
-</table>
-<p><a name="validate_new 根据required验证组件的值是否正确"></a></p>
-<h2 id="validate-根据required验证组件的值是否正确-⇒-object"><a href="#validate-根据required验证组件的值是否正确-⇒-object" class="headerlink" title="validate() 根据required验证组件的值是否正确() ⇒ object"></a>validate() 根据required验证组件的值是否正确() ⇒ <code>object</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>object</code> - result 结果<br><strong>Access:</strong> public<br><a name="event_select 选择某一项时触发"></a></p>
-<h2 id="“select-选择某一项时触发”"><a href="#“select-选择某一项时触发”" class="headerlink" title="“select 选择某一项时触发”"></a>“select 选择某一项时触发”</h2><p><strong>Kind</strong>: event emitted<br><strong>Properties</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>sender</td>
-<td><code>object</code></td>
-<td>事件发送对象</td>
-</tr>
-<tr>
-<td>selected</td>
-<td><code>object</code></td>
-<td>当前选择</td>
-</tr>
-</tbody>
-</table>
+<p><a name="Component"></a></p>
+<h2 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h2><hr>
+<h2 id="JRImagePreview-图片预览"><a href="#JRImagePreview-图片预览" class="headerlink" title=" JRImagePreview 图片预览"></a> JRImagePreview 图片预览</h2><p><strong>Kind</strong>: global constant  </p>
 
 <script>
 var index = 0;
@@ -676,146 +509,36 @@ var index = 0;
     (function(index) {
       var template = JRUI._.multiline(function(){/*
       
-<jr-radio-group source={source} />
+<img title='点击查看预览' on-click={this.show()} width=100 src = 'http://gacha.nosdn.127.net/639562a1f83047ffa4ae411c6aa49fa0.jpeg?imageView&type=jpg&enlarge=1&quality=100&axis=0'>
 
       */});
       
 var component = new JRUI.Component({
     template: template,
-    data: {
-        source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-radio-group source={source} value={value} selected={selected} />
-<div>value: {value}</div>
-<div>selected: {selected ? JSON.stringify(selected) : ''}</div>
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {id: 11, name: '选项1'},
-            {id: 22, name: '选项2'},
-            {id: 33, name: '选项3'},
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-form>
-    <jr-form-item cols="12" title="用户名" hint="用户名的用途">
-        <jr-radio-group source={source} />
-    </jr-form-item>
-</jr-form>
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-radio-group source={source} disabled />
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-radio-group service={@(this.service)} />
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    service: {
-        getList: function(params, success) {
-            JRUI.ajax.request({
-                url: '../data/list.json',
-                method: 'get',
-                type: 'json',
-                data: params,
-                success: success
-            });
+    show(){
+     (new JRUI.JRImagePreview({
+            data:{
+                "imageList":[
+                    {
+                        name: 'test.jpeg',
+                        src: 'http://gacha.nosdn.127.net/639562a1f83047ffa4ae411c6aa49fa0.jpeg?imageView&type=jpg&enlarge=1&quality=100&axis=0'
+                    },
+                    {
+                        name: 'test2.jpg',
+                        src: 'http://gacha.nosdn.127.net/bd8705b5782841dc9e36b8af2cc77aba.jpeg?imageView&type=jpg&enlarge=1&quality=100&axis=0'
+                    }, {
+                        name: 'test3.jpeg',
+                        src: 'http://gacha.nosdn.127.net/b288f65765cd4f0da3775c2228d1f182.jpg?imageView&type=jpg&enlarge=1&quality=100&axis=0'
+                    },
+                    {
+                        name: 'test4.jpg',
+                        src: 'http://gacha.nosdn.127.net/ec3004a7ea034ffda67126f933edaed1.jpeg?imageView&type=jpg&enlarge=1&quality=100&axis=0'
+                    }
+                ],
+                curIndex:1,
         }
-    }
-});
-
-      component.$inject(document.querySelectorAll('.m-example')[index]);
-    })(index++);
-    
-    (function(index) {
-      var template = JRUI._.multiline(function(){/*
-      
-<jr-radio-group source={source} block />
-
-      */});
-      
-var component = new JRUI.Component({
-    template: template,
-    data: {
-        source: [
-            {name: '选项1'},
-            {name: '选项2'},
-            {name: '选项3'},
-            {name: '选项4'},
-            {name: '选项5'},
-            {name: '选项6'}
-        ]
-    }
+    })).$inject(document.body)
+    },
 });
 
       component.$inject(document.querySelectorAll('.m-example')[index]);
@@ -825,10 +548,10 @@ var component = new JRUI.Component({
 
                         <div class="guide-links">
                             
-                                <span>← <a href="/JR/components/form_JRMultiSelect_.html">多级选择</a></span>
+                                <span>← <a href="/JR/components/widget_JRIcon_.html">图标</a></span>
                                 
                                     
-                                        <span style="float:right"><a href="/JR/components/form_JRSelect_.html">下拉选择</a> →</span>
+                                        <span style="float:right"><a href="/JR/components/widget_JRLoading_.html">加载中</a> →</span>
                                         
                         </div>
                 </div>
