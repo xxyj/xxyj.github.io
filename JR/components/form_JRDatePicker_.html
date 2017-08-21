@@ -457,7 +457,7 @@
 <h3 id="日期时间选择"><a href="#日期时间选择" class="headerlink" title="日期时间选择"></a>日期时间选择</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date1&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date2&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">value</span>=<span class="string">&#123;date1&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date2&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">1、&#123;date1&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">2、&#123;date2&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">date1</span>: <span class="number">1481287269287</span>,</div><div class="line">        <span class="attr">date2</span>: <span class="string">'2016-12-09 09:03'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
@@ -501,6 +501,8 @@
 <dd></dd>
 <dt><a href="#select(date) 选择一个日期">select(date) 选择一个日期(date)</a> ⇒ <code>void</code></dt>
 <dd></dd>
+<dt><a href="#current_new 选择当前时间">current() 选择当前时间()</a> ⇒ <code>void</code></dt>
+<dd></dd>
 <dt><a href="#isOutOfRange(date) 是否超出规定的日期时间范围">isOutOfRange(date) 是否超出规定的日期时间范围(date)</a> ⇒ <code>boolean</code> | <code>Date</code></dt>
 <dd></dd>
 </dl>
@@ -537,6 +539,12 @@
 <td><code>object</code></td>
 <td><code></code></td>
 <td>&lt;=&gt; 当前选择的日期时间</td>
+</tr>
+<tr>
+<td>[options.data.value]</td>
+<td><code>object</code></td>
+<td><code></code></td>
+<td>&lt;=&gt; 当前选择的日期时间(经过格式化，优先级高于date)</td>
 </tr>
 <tr>
 <td>[options.data.showTime]</td>
@@ -657,7 +665,8 @@
 </tr>
 </tbody>
 </table>
-<p><a name="isOutOfRange(date) 是否超出规定的日期时间范围"></a></p>
+<p><a name="current_new 选择当前时间"></a></p>
+<h2 id="current-选择当前时间-⇒-void"><a href="#current-选择当前时间-⇒-void" class="headerlink" title="current() 选择当前时间() ⇒ void"></a>current() 选择当前时间() ⇒ <code>void</code></h2><p><strong>Kind</strong>: global function<br><strong>Access:</strong> public<br><a name="isOutOfRange(date) 是否超出规定的日期时间范围"></a></p>
 <h2 id="isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date"><a href="#isOutOfRange-date-是否超出规定的日期时间范围-date-⇒-boolean-124-Date" class="headerlink" title="isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ boolean &#124; Date"></a>isOutOfRange(date) 是否超出规定的日期时间范围(date) ⇒ <code>boolean</code> &#124; <code>Date</code></h2><p><strong>Kind</strong>: global function<br><strong>Returns</strong>: <code>boolean</code> &#124; <code>Date</code> - date 如果没有超出日期时间范围，则返回false；如果超出日期时间范围，则返回范围边界的日期时间<br><strong>Access:</strong> public  </p>
 <table>
 <thead>
@@ -771,13 +780,15 @@ var index = 0;
 <div class="f-cb">
 <jr-form>
     <jr-form-item cols=4>
-        <jr-date-picker showTime date={date1} />
+        <jr-date-picker value={date1} />
     </jr-form-item>
     <jr-form-item cols=4>
         <jr-date-picker showTime date={date2} />
     </jr-form-item>
 </jr-form>
 </div>
+1、{date1}<br>
+2、{date2}
 
       */});
       
