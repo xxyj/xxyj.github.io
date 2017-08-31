@@ -1,0 +1,267 @@
+<!doctype html>
+
+<head>
+    <title>前端代码在线编辑</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../css/ambiance.css">
+    <link rel="stylesheet" href="../../css/codemirror.css">
+    <!--全屏模式-->
+    <link rel="stylesheet" href="../../css/fullscreen.css">
+    <link rel="stylesheet" href="../../css/show-hint.css">
+    <style type='text/css' rel="stylesheet">
+        body {
+            background: #dbdbdb;
+        }
+
+        .warp {
+            display: flex;
+            position: absolute;
+            top: 60px;
+            bottom: 250px;
+            left: 0px;
+            right: 0px;
+            /*overflow: hidden;*/
+        }
+
+        input[type='button'] {
+            cursor: pointer;
+            width: 60px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+        }
+
+        p {
+            position: absolute;
+            margin-top: -25px;
+            margin-left: 10px;
+        }
+
+        .item {
+            width: 33.3%;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100%;
+            resize: none;
+        }
+
+        textarea:focus {
+            outline: 0;
+            /* Chrome */
+        }
+
+        iframe {
+            position: absolute;
+            bottom: 0px;
+            height: 250px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input id='run' type="button" value="运行" />
+    </div>
+    <div class="warp">
+        <div class='item'>
+            <p>html</p>
+            <textarea id="html"></textarea>
+        </div>
+        <div class='item'>
+            <p>
+                <select id="jsType">
+                  <option selected value="javascript">javascript</option> 
+                  <option value="regular">regular0.5.2</option> 
+                  <option value="vue">vue2.4.2</option> 
+                  <option value="react">react15.4.2(待完善)</option> 
+                </select>
+                <input type="button" value="demo" id='demoBtn' />
+                <a href="https://babeljs.io/repl" id="jsxToJs" style="display:none" target="_Blank" />jsx转js</a>
+            </p>
+            <textarea id="javascript"></textarea>
+        </div>
+        <div class='item'>
+            <p>css</p>
+            <textarea id="css"></textarea>
+        </div>
+
+    </div>
+    <iframe id="myIFrame" src="result/result.html" frameborder="0"></iframe>
+    <script src="../../js/codemirror.js"></script>
+    <!--全屏模式-->
+    <script src="../../js/fullscreen.js"></script>
+    <!--显示html相关插件-->
+    <script src="xml.js"></script>
+    <script src="javascript.js"></script>
+    <script src="css.js"></script>
+    <script src="htmlmixed.js"></script>
+
+    <!--代码提示-->
+    <script src="../../js/show-hint.js"></script>
+    <script src="javascript-hint.js"></script>
+    <script src="xml-hint.js"></script>
+    <script src="html-hint.js"></script>
+    <script src="css-hint.js"></script>
+
+    <!--显示vue的插件-->
+    <!--<script src="vue.js"></script>-->
+    <!--关闭标签-->
+    <script src="../../js/xml-fold.js"></script>
+    <script src="../../js/closetag.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var keyObj = {
+                "Ctrl-F": function (cm) {
+                    cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+                },
+                "Esc": function (cm) {
+                    if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+                },
+            }
+            window.onload = function () {
+                let jsObj = {
+                    // 选用的模板
+                    mode: "javascript",
+                    type: "javascript",
+                    // tab 产生的个空格
+                    tabSize: 4,
+                    // 缩进单位
+                    indentUnit: 4,
+                    // tab 产生的个空格
+                    indentWithTabs: true,
+                    // 是否显示行号
+                    lineNumbers: true,
+                    theme: "ambiance",
+                    //自动关闭标签
+                    autoCloseTags: true,
+                    //全屏模式
+                    fullScreen: false,
+                    // theme: "night",
+                    extraKeys: keyObj,
+                }
+                let htmlObj = JSON.parse(JSON.stringify(jsObj))
+                let cssObj = JSON.parse(JSON.stringify(jsObj))
+                htmlObj.mode = "text/html"
+                cssObj.mode = "css"
+                htmlObj.extraKeys = keyObj;
+                cssObj.extraKeys = keyObj;
+                let jsCodeMirror = CodeMirror.fromTextArea(document.getElementById("javascript"), jsObj);
+                let htmlCodeMirror = CodeMirror.fromTextArea(document.getElementById("html"), htmlObj);
+                let cssCodeMirror = CodeMirror.fromTextArea(document.getElementById("css"), cssObj);
+                jsCodeMirror.on("change", function (editor, change) {
+                    showTips(editor, change, 2)
+                });
+                htmlCodeMirror.on("change", function (editor, change) {
+                    showTips(editor, change, 0)
+                });
+                cssCodeMirror.on("change", function (editor, change) {
+                    showTips(editor, change, 1)
+                });
+                var showTips = function (editor, change, type) {
+                    //任意键触发autocomplet
+                    if (change.origin == "+input") {
+                        var text = change.text;
+                        if (!ignoreToken(text)) {
+                            return;
+                        }
+                        setTimeout(function () {
+                            switch (type) {
+                                case 0:
+                                    htmlCodeMirror.execCommand("autocomplete");
+                                    break;
+                                case 1:
+                                    cssCodeMirror.execCommand("autocomplete");
+                                    break;
+                                case 2:
+                                    jsCodeMirror.execCommand("autocomplete");
+                                    break;
+                            }
+
+                        }, 20);
+                    }
+                }
+                var ignoreToken = function (text) {
+                    var reg = /^[a-zA-Z\.]+$/;
+                    return reg.test(text[0])
+                }
+                var type = "javascript";
+                var tojs  = document.getElementById("jsxToJs");
+                document.getElementById("jsType").onchange = function () {
+                    htmlCodeMirror.setValue(" ")
+                    jsCodeMirror.setValue(" ");
+                    cssCodeMirror.setValue(" ");
+                    type = this.value;
+                    jsCodeMirror.setOption("type", type)
+                    if(type==="react"){
+                        tojs.style.display="inline-block";
+                    }else{
+                        tojs.style.display="none";
+                    }
+                }
+
+                document.getElementById("demoBtn").onclick = function () {
+                    switch (document.getElementById("jsType").value) {
+                        case "javascript":
+                            htmlCodeMirror.setValue(`<div id="app"></div>`)
+                            jsCodeMirror.setValue(
+                                "document.getElementById('app').innerHTML='Hello xiongxu,I am js'");
+                            break;
+                        case "react":
+                            htmlCodeMirror.setValue(`<div id="app"></div>`)
+                            jsCodeMirror.setValue(
+                                ` ReactDOM.render(React.createElement(
+     "h1",
+     null,
+     "Hello xiongxu I am react!"
+    ), document.getElementById("app"));`
+                            );
+                            break;
+                        case "vue":
+                            htmlCodeMirror.setValue(
+                                `<div id="app">
+    {{ message }}
+</div>`
+                            );
+                            jsCodeMirror.setValue(
+                                `var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello xiongxu,I am vue'
+    }
+})`
+                            );
+                            break;
+                        case "regular":
+                            htmlCodeMirror.setValue('<div id="app">\</div>')
+
+                            jsCodeMirror.setValue(
+                                `new (Regular.extend({
+    template: 'hello,{message},I am regular',
+    data: {message: "xiongxu"}
+}))().$inject('#app');`
+                            );
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                document.getElementById("run").onclick = function () {
+                    //  向iframe发数据啦
+                    window.frames[0].postMessage({
+                        // document.getElementById('myIFrame').contentWindow.postMessage({
+                        html: htmlCodeMirror.getValue(),
+                        js: jsCodeMirror.getValue(),
+                        type: type,
+                        css: cssCodeMirror.getValue()
+                    }, '*')
+                }
+
+            }
+        })()
+    </script>
+</body>
+
+</p>

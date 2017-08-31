@@ -68,7 +68,13 @@
                                 
                                 <li>
                                     <a href="/JR/components">
-                                        API
+                                        JRUI在线API
+                                    </a>
+                                </li>
+                                
+                                <li>
+                                    <a href="/codeOnline/model/html/index.html">
+                                        代码在线编辑
                                     </a>
                                 </li>
                                 
@@ -129,6 +135,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -146,12 +154,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/JR/components">API</a></li>
+					<li style="width: 33.333333333333336%"><a href="/JR/components">JRUI在线API</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/codeOnline/model/html/index.html">代码在线编辑</a></li>
 		        
 				</ul>
 			</nav>
@@ -189,12 +199,78 @@
       
         <div class="article-entry" itemprop="articleBody">
           
-            <h3 id="在知乎上看到这么一个问题：https-www-zhihu-com-question-60165921"><a href="#在知乎上看到这么一个问题：https-www-zhihu-com-question-60165921" class="headerlink" title="在知乎上看到这么一个问题：https://www.zhihu.com/question/60165921"></a>在知乎上看到这么一个问题：<a href="https://www.zhihu.com/question/60165921" target="_blank" rel="external">https://www.zhihu.com/question/60165921</a></h3><p>大家都在关注题主的标题，我们来看看他的正文:”一个问题，输入m,n参数，获取一个m长度的都是n的数组，不能用循环，他不会写”,那么我们来整理收集下，这个应该怎么写~<br>
-              
-                <a class="article-more-a" href="/2017/08/07/一道有意思的题目/#more">
-                  展开全文 >></a>
-                
-                  
+                    <h3 id="在知乎上看到这么一个面试问题-”输入m-n参数，获取一个m长度的都是n的数组，不能用循环，怎么写”-大家都在讨论为什么不能用循环，完全是吹毛求疵"><a href="#在知乎上看到这么一个面试问题-”输入m-n参数，获取一个m长度的都是n的数组，不能用循环，怎么写”-大家都在讨论为什么不能用循环，完全是吹毛求疵" class="headerlink" title="在知乎上看到这么一个面试问题:”输入m,n参数，获取一个m长度的都是n的数组，不能用循环，怎么写”, 大家都在讨论为什么不能用循环，完全是吹毛求疵"></a>在知乎上看到这么一个面试问题:”输入m,n参数，获取一个m长度的都是n的数组，不能用循环，怎么写”, 大家都在讨论为什么不能用循环，完全是吹毛求疵</h3><p>这里，我们不关注题目合理与否，就是来看看会有多少种写法：</p>
+<h4 id="我们先做一个前提："><a href="#我们先做一个前提：" class="headerlink" title="我们先做一个前提："></a>我们先做一个前提：</h4><ul>
+<li>不能用循环是不能用循环语句，而不是底层不能做循环</li>
+<li>m,n的参数合法(为了精简代码，只写核心部分)</li>
+</ul>
+<h3 id="具体的实现方式："><a href="#具体的实现方式：" class="headerlink" title="具体的实现方式："></a>具体的实现方式：</h3><ul>
+<li>递归</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arr= [];</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">m,n</span>)</span>&#123;</div><div class="line">    arr.push(n)</div><div class="line">    arr.length&lt;<span class="number">10</span>?<span class="built_in">arguments</span>.callee(m,n):<span class="string">''</span></div><div class="line">&#125;)(<span class="number">10</span>,<span class="number">3</span>)</div><div class="line"><span class="built_in">console</span>.info(arr);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：面试官想要的答案</p>
+</blockquote>
+<h3 id="那么来看看还有哪些方法可以"><a href="#那么来看看还有哪些方法可以" class="headerlink" title="那么来看看还有哪些方法可以"></a>那么来看看还有哪些方法可以</h3><ul>
+<li>1、join+split </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> (<span class="keyword">new</span> <span class="built_in">Array</span>(m+<span class="number">1</span>).join(<span class="string">','</span>+n).split(<span class="string">','</span>)).slice(<span class="number">1</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：这种方式需要先转成字符串，再转成数组，并且生成的数组是字符串而不是数字，如果需要生成的是数字则还需要做处理</p>
+</blockquote>
+<p><br></p>
+<ul>
+<li>2、concat</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function">(<span class="params">f =&gt; f(f</span>))(<span class="params">g =&gt; (m, n</span>) =&gt;</span> m === <span class="number">1</span> ? [n] : g(g)(m - <span class="number">1</span>, n).concat(n))(m, n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：这种写法不太容易理解</p>
+</blockquote>
+<p><br></p>
+<ul>
+<li>3、正则表达式,</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).toString().replace(<span class="regexp">/(?:)/g</span>,n).split(<span class="string">','</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：正则总是能神奇的发挥出作用</p>
+</blockquote>
+<p><br></p>
+<ul>
+<li>4、from(es5) </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.from(&#123;<span class="attr">length</span>:m&#125;,()=&gt; n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：比较理想的一种做法</p>
+</blockquote>
+<p><br></p>
+<ul>
+<li>5、map(es5)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.apply(<span class="literal">null</span>, <span class="built_in">Array</span>(m)).map(<span class="function"><span class="params">()</span> =&gt;</span> n);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> [...Array(m).keys()].map(<span class="function"><span class="params">e</span> =&gt;</span> n)</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).toString().split(<span class="string">","</span>).map(<span class="function"><span class="params">()</span>=&gt;</span>n);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：因为map会跳过没有赋值的键，所以不能直接在空数组上使用，上面几种也是比较理想的做法</p>
+</blockquote>
+<p><br></p>
+<ul>
+<li>6、fill(es6)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Array</span>(m).fill(n) </div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：如果不考虑兼容，应该是最合适的方法</p>
+</blockquote>
+<p><br></p>
+<ul>
+<li>7、padStart padEnd(es8)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function">(<span class="params">m,n</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">let</span> len =  +m * ((<span class="string">''</span> + n).length + <span class="number">1</span>);</div><div class="line">    <span class="keyword">return</span> <span class="string">''</span>.padStart(len,<span class="string">','</span> + n).split(<span class="string">','</span>).slice(<span class="number">1</span>);</div><div class="line">&#125;)(<span class="number">10</span>,<span class="string">'abc'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注：兼容性不好，实现方式亦不佳</p>
+</blockquote>
+<p><br></p>
+<h3 id="其实实现一个功能，常常有很多方法，本文的目的就是让大家平时多发散思维，至于具体的实现方式：只选合适的！"><a href="#其实实现一个功能，常常有很多方法，本文的目的就是让大家平时多发散思维，至于具体的实现方式：只选合适的！" class="headerlink" title="其实实现一个功能，常常有很多方法，本文的目的就是让大家平时多发散思维，至于具体的实现方式：只选合适的！"></a>其实实现一个功能，常常有很多方法，本文的目的就是让大家平时多发散思维，至于具体的实现方式：只选合适的！</h3>
+                      
 
                         
     </div>
