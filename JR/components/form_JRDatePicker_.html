@@ -215,7 +215,7 @@
                                 
                                     <li>
                                         <a href="/JR/components/form_JRUpload_.html" class="sidebar-link">
-                                            上传组件
+                                            上传文件
                                                 JRUpload
                                         </a>
                                     </li>
@@ -457,8 +457,8 @@
 <h3 id="日期时间选择"><a href="#日期时间选择" class="headerlink" title="日期时间选择"></a>日期时间选择</h3><!-- demo_start -->
 <div class="m-example"></div>
 
-<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">value</span>=<span class="string">&#123;date1&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">4</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date2&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">1、&#123;date1&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">2、&#123;date2&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">date1</span>: <span class="number">1481287269287</span>,</div><div class="line">        <span class="attr">date2</span>: <span class="string">'2016-12-09 09:03'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"f-cb"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">jr-form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">value</span>=<span class="string">&#123;date1&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date2&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">jr-form-item</span> <span class="attr">cols</span>=<span class="string">3</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">jr-date-picker</span> <span class="attr">showTime</span> <span class="attr">date</span>=<span class="string">&#123;date3&#125;</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">jr-form-item</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">jr-form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">1、&#123;date1&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">2、&#123;date2&#125;<span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">3、&#123;date3&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> component = <span class="keyword">new</span> JRUI.Component(&#123;</div><div class="line">    <span class="attr">template</span>: template,</div><div class="line">    <span class="attr">data</span>: &#123;</div><div class="line">        <span class="attr">date1</span>: <span class="number">1481287269287</span>,</div><div class="line">        <span class="attr">date2</span>: <span class="string">'2016-12-09 09:03:02'</span>,</div><div class="line">        <span class="attr">date3</span>: <span class="string">'2016/12/09 09:03:02'</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <!-- demo_end -->
 <h3 id="禁用组件"><a href="#禁用组件" class="headerlink" title="禁用组件"></a>禁用组件</h3><!-- demo_start -->
 <div class="m-example"></div>
@@ -779,16 +779,20 @@ var index = 0;
       
 <div class="f-cb">
 <jr-form>
-    <jr-form-item cols=4>
-        <jr-date-picker value={date1} />
+    <jr-form-item cols=3>
+        <jr-date-picker showTime value={date1} />
     </jr-form-item>
-    <jr-form-item cols=4>
+    <jr-form-item cols=3>
         <jr-date-picker showTime date={date2} />
+    </jr-form-item>
+    <jr-form-item cols=3>
+        <jr-date-picker showTime date={date3} />
     </jr-form-item>
 </jr-form>
 </div>
 1、{date1}<br>
-2、{date2}
+2、{date2}<br>
+3、{date3}
 
       */});
       
@@ -796,7 +800,8 @@ var component = new JRUI.Component({
     template: template,
     data: {
         date1: 1481287269287,
-        date2: '2016-12-09 09:03'
+        date2: '2016-12-09 09:03:02',
+        date3: '2016/12/09 09:03:02'
     }
 });
 
