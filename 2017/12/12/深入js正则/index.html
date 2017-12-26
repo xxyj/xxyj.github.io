@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9742052-374ecf81d97de92a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9742052-be27d33d7460689f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/9742052-57d741c41068c429.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-12-26T11:11:01.000Z">
+<meta property="og:updated_time" content="2017-12-26T11:27:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入js正则">
 <meta name="twitter:description" content="正则，使代码更加简单，最重要的是这可是个装逼利器">
@@ -272,7 +272,7 @@
 <li>确定方案：就是找到合适的锚，然后用逗号将其替换<br>然后一步步推导出我们的结果：<br><img width="600" src="http://upload-images.jianshu.io/upload_images/9742052-374ecf81d97de92a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></li>
 </ul>
 <blockquote>
-<p><strong> 举一反三：同理处理电话号码344，银行卡号444…分割的需求以及密码强度要求的验证 </strong></p>
+<p><strong> 举一反三：同理如何处理电话号码344分割？银行卡号444…分割？密码强度的验证？ </strong></p>
 </blockquote>
 <p><br><br></p>
 <h3 id="让我们再来看一个例子"><a href="#让我们再来看一个例子" class="headerlink" title="让我们再来看一个例子"></a>让我们再来看一个例子</h3><h4 id="如何匹配出文章中所有的日期-年月日-？"><a href="#如何匹配出文章中所有的日期-年月日-？" class="headerlink" title="如何匹配出文章中所有的日期(年月日)？"></a>如何匹配出文章中所有的日期(年月日)？</h4><blockquote>
@@ -299,6 +299,9 @@
 </code></pre></li>
 <li>问：4、反向引用也被分组包括了肿么办？<pre><code>答：将匹配出来的结果分组出来给之后使用。
     例子：/(\d)(\1)\2/ === /(\d)(\1)\1/  此处的\2匹配结果和\1是完全一样的
+</code></pre></li>
+<li>问：5、如果不希望前面的括号被匹配该肿么办？<pre><code>答：使用非捕获括号(?:),作用就是使括号仅仅是括号，不存储，无法被反引用
+    例子:/(?:\d)(\d) \1/  对于支付串“12 2”而言，&quot;\1&quot;将匹配第二个字符，也就是2,  非捕获括号能减少存储，加速，是正则优化的措施之一                
 </code></pre></li>
 </ul>
 <p><br></p>
@@ -329,8 +332,8 @@
 <blockquote>
 <p>看了以上2个图你应该已经明白了什么是回溯。第二个正则是对第一个正则的优化，减少了回溯的次数，提高了正则的效率，这个也是正则优化的主要方向。</p>
 </blockquote>
-<h3 id="那么说到这里也就顺理成章的说说正则的优化了吧！"><a href="#那么说到这里也就顺理成章的说说正则的优化了吧！" class="headerlink" title="那么说到这里也就顺理成章的说说正则的优化了吧！"></a>那么说到这里也就顺理成章的说说正则的优化了吧！</h3><p><strong>no,no,no, 这个说来话长，我们还是留待后续吧，敬请期待…</strong></p>
-<p>###结束语 over </p>
+<h3 id="那么说到这里也就顺理成章的说说正则的优化了吧！"><a href="#那么说到这里也就顺理成章的说说正则的优化了吧！" class="headerlink" title="那么说到这里也就顺理成章的说说正则的优化了吧！"></a>那么说到这里也就顺理成章的说说正则的优化了吧！</h3><p><strong>no,no,no, 这个说来话长，我们还是留待后续吧，敬请期待…PS：文中其实已经提出了几处优化的方向</strong></p>
+<p>###结束语 over<br><em>* </em>差点忘记了，如果没考虑好密码强度验证该怎么写的，这里给个例子：/(?=.<em>\d)(?=.</em>[A-Z])(?=.<em>[a-z])^[0-9A-Za-z]+$/</em></p>
 <p><br></p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
 <li>《JavaScript正则表达式迷你书》</li>
