@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://pic1.zhimg.com/v2-0caec0bbd2e66458f729c0c83a15714f.jpg">
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-360e8c0a9bbbe8e911ed3ec90aa25d0e_hd.jpg">
 <meta property="og:image" content="https://pic3.zhimg.com/80/v2-1e798ea7b34896b68637a47de792004c_hd.jpg">
-<meta property="og:updated_time" content="2018-09-28T07:17:22.000Z">
+<meta property="og:updated_time" content="2018-09-28T07:21:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器进程&#x2F;多线">
 <meta name="twitter:description" content="理解下浏览器运行机制，阅读本文之前请先自行了解js事件循环的原理">
@@ -225,12 +225,7 @@
 <li>定时器触发线程：定时器处理所在的线程</li>
 <li>异步http请求触发线程：处理ajax等异步请求的线程</li>
 </ul>
-<p>前面2个线程都非常的好理解，那么我们来说说什么是事件触发线程</p>
-<ul>
-<li>事件触发线程：当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。</li>
-<li>定时器触发线程：如果被触发的这个事件是定时器，那么就交给定时器触发线程处理，完成后将事件添加到待处理队列的队尾，等待JS引擎的处理</li>
-<li>异步http请求触发线程：如果被触发的这个事件是异步http请求，那么就交给该线程处理，完成后将事件添加到待处理队列的队尾，等待JS引擎的处理</li>
-</ul>
+<h5 id="前面2个线程都非常的好理解，那么我们来说说什么是事件触发线程"><a href="#前面2个线程都非常的好理解，那么我们来说说什么是事件触发线程" class="headerlink" title="前面2个线程都非常的好理解，那么我们来说说什么是事件触发线程"></a>前面2个线程都非常的好理解，那么我们来说说什么是事件触发线程</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>、事件触发线程：当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。</div><div class="line"><span class="number">2</span>、定时器触发线程：如果被触发的这个事件是定时器，那么就交给定时器触发线程处理，完成后将事件添加到待处理队列的队尾，等待JS引擎的处理</div><div class="line"><span class="number">3</span>、异步http请求触发线程：如果被触发的这个事件是异步http请求，那么就交给该线程处理，完成后将事件添加到待处理队列的队尾，等待JS引擎的处理</div></pre></td></tr></table></figure>
 <blockquote>
 <p>不管有几个线程参与，最终都是将事件插入到待执行队列的末尾，然后有js引擎线程来处理，这也就是js单线程的说法</p>
 </blockquote>
