@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 熊旭的博客</title>
+  <title>浏览器进程/多线 | 熊旭的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="熊旭的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="理解下浏览器运行机制，阅读本文之前请先自行了解js事件循环的原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器进程&#x2F;多线">
+<meta property="og:url" content="http://yoursite.com/2018/09/28/浏览器进程多线/index.html">
 <meta property="og:site_name" content="熊旭的博客">
+<meta property="og:description" content="理解下浏览器运行机制，阅读本文之前请先自行了解js事件循环的原理">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-0caec0bbd2e66458f729c0c83a15714f.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-360e8c0a9bbbe8e911ed3ec90aa25d0e_hd.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-1e798ea7b34896b68637a47de792004c_hd.jpg">
+<meta property="og:updated_time" content="2018-09-28T07:17:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="熊旭的博客">
+<meta name="twitter:title" content="浏览器进程&#x2F;多线">
+<meta name="twitter:description" content="理解下浏览器运行机制，阅读本文之前请先自行了解js事件循环的原理">
+<meta name="twitter:image" content="https://pic1.zhimg.com/v2-0caec0bbd2e66458f729c0c83a15714f.jpg">
   
     <link rel="alternative" href="/atom.xml" title="熊旭的博客" type="application/atom+xml">
   
@@ -176,235 +184,144 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="浏览器进程/多线-浏览器进程多线" class="article article-type-浏览器进程/多线 "
+  itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      浏览器进程/多线
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-浏览器进程/多线">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="article-meta">
-        <a href="/2018/09/28/浏览器进程多线/" class="archive-article-date">
+
+          
+            <a href="/2018/09/28/浏览器进程多线/" class="archive-article-date">
   	<time datetime="2018-09-28T06:19:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
 </a>
-      </div>
+              
+      </header>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/28/浏览器进程多线/">浏览器进程/多线</a>
-    </h1>
-  
+        <div class="article-entry" itemprop="articleBody">
+          
+                    <p>理解下浏览器运行机制，阅读本文之前请先自行了解js事件循环的原理<br><a id="more"></a></p>
+<h3 id="首先抛出几个问题"><a href="#首先抛出几个问题" class="headerlink" title="首先抛出几个问题"></a>首先抛出几个问题</h3><ul>
+<li>我们都知道js是单线程的，如果js在执行代码，那么setTimeout的这个间隔时间是有谁来计算的</li>
+<li>在写css的时候我们常常会说启用GPU加速，那么GPU是什么？为什么能加速？</li>
+</ul>
+<h4 id="带着这几个问题，我们先往下看：浏览器的进程主要有下面几个"><a href="#带着这几个问题，我们先往下看：浏览器的进程主要有下面几个" class="headerlink" title="带着这几个问题，我们先往下看：浏览器的进程主要有下面几个"></a>带着这几个问题，我们先往下看：浏览器的进程主要有下面几个</h4><p><img src="https://pic1.zhimg.com/v2-0caec0bbd2e66458f729c0c83a15714f.jpg" alt=""></p>
+<ul>
+<li>Browser进程:负责浏览器界面交互，包括前进后退，tab打开关闭，资源下载等等等，还有最终将渲染好的视图会知道页面上也有这个进程负责。在浏览器只会有1个</li>
+<li>第三方插件进程：为了避免插件奔溃导致页面奔溃，所以每个插件都会有1个进程</li>
+<li>GPU进程：只会有1个</li>
+<li>渲染进程：就是我们经常打交道的，包括页面渲染，解析js脚本等等。一般来说每个tab页就会有1个渲染进程，但是浏览器会将相同tab页的进程合并，这也是避免了一个页面的carsh影响到其他页面</li>
+</ul>
+<h4 id="然后我们再来看看渲染进程又包含了哪些主要的线程"><a href="#然后我们再来看看渲染进程又包含了哪些主要的线程" class="headerlink" title="然后我们再来看看渲染进程又包含了哪些主要的线程"></a>然后我们再来看看渲染进程又包含了哪些主要的线程</h4><p><img src="https://pic3.zhimg.com/80/v2-360e8c0a9bbbe8e911ed3ec90aa25d0e_hd.jpg" alt=""></p>
+<ul>
+<li>js引擎线程：就是我们常说的js线程，js单线程指的就是他</li>
+<li>GUI渲染线程：这个就是UI线程</li>
+<li>事件触发线程：这个线程来处事件循环队列</li>
+<li>定时器触发线程：定时器处理所在的线程</li>
+<li>异步http请求触发线程：处理ajax等异步请求的线程</li>
+</ul>
+<p>前面2个线程都非常的好理解，那么我们来说说什么是事件触发线程</p>
+<ul>
+<li>事件触发线程：当一个事件被触发时该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理。</li>
+<li>定时器触发线程：如果被触发的这个事件是定时器，那么就交给定时器触发线程处理，完成后将事件添加到待处理队列的队尾，等待JS引擎的处理</li>
+<li>异步http请求触发线程：如果被触发的这个事件是异步http请求，那么就交给该线程处理，完成后将事件添加到待处理队列的队尾，等待JS引擎的处理</li>
+</ul>
+<blockquote>
+<p>不管有几个线程参与，最终都是将事件插入到待执行队列的末尾，然后有js引擎线程来处理，这也就是js单线程的说法</p>
+</blockquote>
+<h3 id="浏览器的事件循环"><a href="#浏览器的事件循环" class="headerlink" title="浏览器的事件循环"></a>浏览器的事件循环</h3><p> <img src="https://pic3.zhimg.com/80/v2-1e798ea7b34896b68637a47de792004c_hd.jpg" alt=""></p>
+<h3 id="看了这个图，再回头看最前面的2个问题，是否就能非常容易的简答了"><a href="#看了这个图，再回头看最前面的2个问题，是否就能非常容易的简答了" class="headerlink" title="看了这个图，再回头看最前面的2个问题，是否就能非常容易的简答了"></a>看了这个图，再回头看最前面的2个问题，是否就能非常容易的简答了</h3>
+                      
 
-        <div class="article-info info-on-right">
+                        
+    </div>
+    <div class="article-info article-info-index">
+      
           
             
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-  <div style='height:300px;position:relative'>
-    <!-- UY BEGIN -->
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
-    <!-- UY END -->
-  </div>
-</article>
+              
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="article-meta">
-        <a href="/2018/04/29/纯前端人脸识别/" class="archive-article-date">
-  	<time datetime="2018-04-29T06:25:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-29</time>
-</a>
+                  
+                    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
       </div>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/29/纯前端人脸识别/">纯前端人脸识别检测</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-            
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    </span>
   </div>
-  <div style='height:300px;position:relative'>
-    <!-- UY BEGIN -->
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
-    <!-- UY END -->
-  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/09/28/浏览器进程多线/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+                      
+                        <div class="clearfix"></div>
+    </div>
+    </div>
 </article>
 
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
+   <div  style="margin:30px;">
+        <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDE2Ny82NzIy">
+        <script type="text/javascript">
+            (function (d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+            if (typeof LivereTower === 'function') {
+                return;
+            }
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="article-meta">
-        <a href="/2017/12/12/深入js正则/" class="archive-article-date">
-  	<time datetime="2017-12-12T09:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-12</time>
-</a>
-      </div>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/12/深入js正则/">深入js正则</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-            
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-  <div style='height:300px;position:relative'>
-    <!-- UY BEGIN -->
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
-    <!-- UY END -->
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="article-meta">
-        <a href="/2017/08/07/一道有意思的题目/" class="archive-article-date">
-  	<time datetime="2017-08-07T02:46:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-07</time>
-</a>
-      </div>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/07/一道有意思的题目/">一道有意思的题目</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-            
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-  <div style='height:300px;position:relative'>
-    <!-- UY BEGIN -->
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
-    <!-- UY END -->
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="article-meta">
-        <a href="/2017/07/14/es7和es8前瞻/" class="archive-article-date">
-  	<time datetime="2017-07-14T03:46:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-14</time>
-</a>
-      </div>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/14/es7和es8前瞻/">es7和es8前瞻</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-            
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-  <div style='height:300px;position:relative'>
-    <!-- UY BEGIN -->
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
-    <!-- UY END -->
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <div class="article-meta">
-        <a href="/2017/06/07/基于canvas的碰撞检测/" class="archive-article-date">
-  	<time datetime="2017-06-07T09:43:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-07</time>
-</a>
-      </div>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/07/基于canvas的碰撞检测/">基于canvas的碰撞检测</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-            
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-  <div style='height:300px;position:relative'>
-    <!-- UY BEGIN -->
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
-    <!-- UY END -->
-  </div>
-</article>
-
-  
-  
-    </div></section>
-  
-
+   </div>
     
 
 
@@ -429,8 +346,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
