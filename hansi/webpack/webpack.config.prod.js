@@ -9,7 +9,7 @@ const WebpackBar = require('webpackbar')
 
 const ANALYZE = process.env.ANALYZE === 'active'
 const ONLINE = process.env.ONLINE === 'active'
-const CDN = process.env.CDN || '/'
+const CDN = process.env.CDN || './'
 
 // 网站版本号设置
 let appVersion = ''
